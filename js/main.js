@@ -194,6 +194,31 @@
       });
     }
 
+    /* ---------- Kundenstimmen: kompakte Zeile → volle Bewertung als Maske ----------
+       Unter 840 px zeigen die Karten nur Name + Sterne (CSS); der Klick
+       öffnet die komplette Bewertung in einem Dialog. */
+    var stimmenRaster = document.querySelector('.stimmen-raster');
+    if (stimmenRaster) {
+      var stimmeMaske = null;
+      stimmenRaster.addEventListener('click', function (e) {
+        if (!window.matchMedia('(max-width: 839px)').matches) return;
+        var fig = e.target.closest('.stimme');
+        if (!fig) return;
+        if (!stimmeMaske) {
+          stimmeMaske = document.createElement('dialog');
+          stimmeMaske.className = 'maske stimme-maske';
+          document.body.appendChild(stimmeMaske);
+          stimmeMaske.addEventListener('click', function (ev) {
+            if (ev.target === stimmeMaske || ev.target.closest('.maske-schliessen')) stimmeMaske.close();
+          });
+        }
+        stimmeMaske.innerHTML =
+          '<button type="button" class="maske-schliessen" aria-label="Schließen">&times;</button>' +
+          '<figure class="stimme">' + fig.innerHTML + '</figure>';
+        if (stimmeMaske.showModal && !stimmeMaske.open) stimmeMaske.showModal();
+      });
+    }
+
     /* ---------- Kontakt-Formular: Anfrage per WhatsApp oder E-Mail ---------- */
     var kontakt = document.getElementById('kontakt-formular');
     if (kontakt) {
