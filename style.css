@@ -286,6 +286,7 @@ img { max-width: 100%; display: block; }
   text-overflow: ellipsis;
 }
 
+.nav-knopf svg { display: none; }
 .nav-knopf {
   border: 2px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.06);
@@ -341,23 +342,31 @@ img { max-width: 100%; display: block; }
 .nav-termin:hover { background: var(--marke-hover) !important; }
 
 /* Rechte Knopf-Gruppe der Kopfleiste */
-/* Schnell-Leiste: Start + Leistungen bleiben sichtbar, solange die volle
-   Navigation im Menü-Knopf steckt (unter 840 px) */
+/* Schnell-Links: Start + Leistungen direkt in der Kopfzeile neben dem
+   Logo, solange die volle Navigation im Menü-Knopf steckt (unter 840 px).
+   Die beiden Punkte sind dafür aus dem Menü ausgeblendet. */
 .kopf-schnell {
   display: flex;
-  justify-content: center;
-  gap: 34px;
-  padding-block: 0 10px;
+  align-items: center;
+  gap: 14px;
+  margin-inline-end: auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.kopf-schnell::-webkit-scrollbar { display: none; }
 .kopf-schnell a {
   color: #e8ebed;
   text-decoration: none;
-  font: 600 16px var(--schrift-text);
-  padding: 8px 4px;
+  font: 600 15px var(--schrift-text);
+  padding: 10px 2px;
   border-block-end: 2px solid transparent;
+  white-space: nowrap;
 }
 .kopf-schnell a:hover { color: #fff; }
 .kopf-schnell a[aria-current="page"] { color: #fff; border-block-end-color: #d9bd77; }
+/* Start + Leistungen stehen schon in der Kopfzeile — nicht doppelt im Menü */
+.hauptnav li:nth-child(-n+2) { display: none; }
 
 .kopf-rechts {
   display: flex;
@@ -1445,10 +1454,26 @@ main a img, .leaflet-container img { cursor: pointer; }
 /* Schmale Handys: Kopfleiste verdichten, damit Logo + Menü + 3 Rund-Knöpfe
    nebeneinander passen (Klickflächen bleiben 44 px) */
 @media (max-width: 480px) {
-  .kopf-innen { gap: 6px; }
-  .kopf-rechts { gap: 6px; }
-  .marke-zeichen img { width: 46px; height: 46px; }
-  .nav-knopf { padding: 8px 10px; font-size: 15px; }
+  .kopf-innen { gap: 4px; }
+  .kopf-rechts { gap: 2px; }
+  .marke-zeichen img { width: 34px; height: 34px; }
+  .kopf-schnell { gap: 7px; margin-inline-start: 2px; }
+  .kopf-schnell a { padding-inline: 1px; }
+  .kopf-schnell a { font-size: 13px; }
+  :lang(tr) .kopf-schnell { gap: 4px; }
+  :lang(tr) .kopf-schnell a { font-size: 12.5px; }
+  .nav-knopf {
+    width: 36px;
+    min-height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  .nav-knopf svg { display: block; }
+  .nav-knopf .nav-wort { display: none; }
+  .thema-knopf, .korb-knopf { width: 36px; height: 36px; min-height: 36px; }
+  .sprache summary { width: 36px; height: 36px; }
 }
 
 /* Kontakt-Knopf-Kacheln: mobil Symbole an einer linken Kante (Hasan) */
@@ -2000,6 +2025,7 @@ main a img, .leaflet-container img { cursor: pointer; }
   .marke-zusatz { font-size: 13px; }
   .nav-knopf { display: none; }
   .kopf-schnell { display: none; }
+  .hauptnav li:nth-child(-n+2) { display: list-item; }
 
   /* Navigation dauerhaft sichtbar, beginnt direkt am Logo */
   .kopf-innen { justify-content: flex-start; gap: 34px; }
