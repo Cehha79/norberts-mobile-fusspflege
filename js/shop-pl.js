@@ -1,0 +1,181 @@
+// Norberts mobile Fußpflege — Shop-Übersetzung POLNISCH (pl).
+// Wird in den pl/-Shop-Seiten VOR js/produkte.js geladen und stellt
+// Pfad-Basis, Oberflächen-Texte, Bereichs-Titel und Produkt-Übersetzungen
+// bereit. Der Bestelltext an Norbert bleibt deutsch (siehe produkte.js).
+
+window.NF_BASIS = '../';
+
+window.NF_TEXTE = {
+  artikel:         'art.',
+  titelZusatz:     ' – Norberts mobile Fußpflege Stuttgart',
+  badgeNeu:        'Nowość',
+  badgeBestseller: 'Bestseller',
+  aufLager:        '● Dostępny',
+  wenig:           '● Ostatnie sztuki',
+  vonSternen:      'na 5 gwiazdek',
+  mengeMinus:      'Zmniejsz ilość',
+  mengePlus:       'Zwiększ ilość',
+  inDenKorb:       'Do koszyka',
+  imKorb:          '✓ W koszyku',
+  jetztKaufen:     'Kup teraz',
+  entfernen:       '– usuń'
+};
+
+window.NF_KATEGORIEN = {
+  w: 'Narzędzia, instrumenty i higiena',
+  c: 'Kremy i balsamy',
+  e: 'Urządzenia elektryczne',
+  b: 'Kąpiele stóp i dodatki',
+  n: 'Pielęgnacja paznokci',
+  h: 'Zrogowaciały naskórek i peeling',
+  k: 'Komfort i odciążenie',
+  g: 'Prezenty i bony'
+};
+
+window.NF_UEBERSETZUNG = {
+  /* --- Werkzeuge & Instrumente --- */
+  w1:  { name: 'Cęgi do zrogowaciałej skóry, stal nierdzewna', info: 'Stal nierdzewna, precyzyjny szlif – do delikatnego usuwania zrogowaciałej skóry.', inhalt: '1 szt. · 14 cm' },
+  w2:  { name: 'Cęgi do paznokci Profi',                       info: 'Mocne przełożenie, czyste cięcie nawet przy grubych paznokciach.',               inhalt: '1 szt. · 12 cm' },
+  w4:  { name: 'Etui z instrumentami, 3-częściowe',            info: 'Cęgi, pilnik i skrobak w skórzanym etui – idealne w podróży.',                   inhalt: 'Zestaw 3-częściowy' },
+  w5:  { name: 'Skrobak do stóp z ostrzem',                    info: 'Pewny chwyt, wymienne ostrza – tylko dla wprawnych rąk.',                        inhalt: '1 szt. + 10 ostrzy' },
+  w6:  { name: 'Nożyczki do paznokci u stóp, wygięte',         info: 'Wygięte ostrze podąża za kształtem paznokcia – delikatnie i dokładnie.',         inhalt: '1 szt. · 10 cm' },
+  w7:  { name: 'Kopytko do skórek, dwustronne',                info: 'Odsuwa i unosi skórki – dwie końcówki robocze.',                                 inhalt: '1 szt.' },
+  w9:  { name: 'Szczoteczka do czyszczenia instrumentów',      info: 'Delikatne mosiężne włosie – utrzymuje pilniki i frezy w czystości.',             inhalt: '1 szt.' },
+  w10: { name: 'Zestaw startowy do pielęgnacji stóp',          info: '6 najważniejszych narzędzi w etui – idealny na początek.',                       inhalt: 'Zestaw 6-częściowy' },
+
+  /* --- Cremes & Balsame --- */
+  c1:  { name: 'Krem do stóp Urea 10 %',                       info: 'Intensywne nawilżenie suchych, zmęczonych stóp.',                                inhalt: '100 ml' },
+  c2:  { name: 'Balsam do stóp z nagietkiem',                  info: 'Łagodzi i pielęgnuje – z nagietkiem i woskiem pszczelim.',                       inhalt: '75 ml' },
+  c3:  { name: 'Maść na pękające pięty, intensywna',           info: 'Bogata pielęgnacja bardzo suchych pięt.',                                        inhalt: '75 ml' },
+  c4:  { name: 'Dezodorant do stóp w sprayu, świeży',          info: 'Długotrwała świeżość, przebadany dermatologicznie.',                             inhalt: '100 ml' },
+  c5:  { name: 'Masło do stóp z masłem shea',                  info: 'Delikatnie rozpływająca się pielęgnacja na noc – z shea i migdałami.',           inhalt: '150 ml' },
+  c6:  { name: 'Chłodzący żel do stóp, mięta',                 info: 'Odświeża zmęczone nogi i stopy – szybko się wchłania.',                          inhalt: '100 ml' },
+  c7:  { name: 'Olejek do masażu, rozmaryn',                   info: 'Rozgrzewający olejek do domowego masażu stóp.',                                  inhalt: '100 ml' },
+  c8:  { name: 'Krem przeciw zrogowaceniom',                   info: 'Widocznie zmiękcza stwardnienia przez noc.',                                     inhalt: '75 ml' },
+  c9:  { name: 'Pianka pielęgnacyjna Express',                 info: 'Wchłania się w kilka sekund – pielęgnacja bez czekania.',                        inhalt: '125 ml' },
+  c10: { name: 'Zimowy duet pielęgnacyjny',                    info: 'Krem do stóp i maść na pękające pięty w korzystnym zestawie.',                   inhalt: 'Zestaw, 2 × 75 ml' },
+  c11: { name: 'Krem do stóp Urea 25 %, intensywny',           info: 'Mocna formuła do bardzo suchej, popękanej skóry.',                               inhalt: '75 ml' },
+  c12: { name: 'Balsam z olejem z wiesiołka',                  info: 'Łagodzi podrażnioną, wrażliwą skórę przez noc.',                                 inhalt: '50 ml' },
+  c13: { name: 'Krem pielęgnacyjny z cynkiem',                 info: 'Wspiera zmęczoną skórę – szybko się wchłania.',                                  inhalt: '50 ml' },
+  c14: { name: 'Rozgrzewający balsam do stóp, imbir',          info: 'Przyjemne ciepło dla zmarzniętych stóp – idealny zimą.',                         inhalt: '75 ml' },
+  c15: { name: 'Krem Sensitiv, bezzapachowy',                  info: 'Bez substancji zapachowych i barwników – do skóry wrażliwej.',                   inhalt: '100 ml' },
+  c16: { name: 'Trio pielęgnacyjne, rozmiary próbne',          info: 'Krem, balsam i pianka na dobry początek.',                                       inhalt: 'Zestaw, 3 × 30 ml' },
+
+  /* --- Elektrische Geräte --- */
+  e1:  { name: 'Elektryczny pilnik do zrogowaciałej skóry',    info: 'Dwie prędkości, akumulator – gładkie pięty bez wysiłku.',                        inhalt: '1 urządzenie + 2 rolki' },
+  e2:  { name: 'Frezarka do paznokci, zestaw 10-częściowy',    info: 'Cichy aparat z 10 końcówkami do pielęgnacji paznokci i zrogowaceń.',             inhalt: '1 zestaw' },
+  e3:  { name: 'Kąpiel stóp z hydromasażem i podgrzewaniem',   info: 'Bąbelki, wibracje i funkcja podgrzewania – wellness w domu.',                    inhalt: '1 urządzenie' },
+  e4:  { name: 'Zapasowe rolki ścierające (3 szt.)',           info: 'Pasują do pilnika elektrycznego – granulacja średnia.',                          inhalt: '3 szt.' },
+  e5:  { name: 'Suszarka UV do lakieru pielęgnacyjnego',       info: 'Suszy lakiery pielęgnacyjne w 60 sekund.',                                       inhalt: '1 urządzenie' },
+  e6:  { name: 'Elektryczny pilnik do paznokci, sztyft',       info: 'Poręczny jak długopis – nadaje kształt i połysk.',                               inhalt: '1 urządzenie + 4 końcówki' },
+  e7:  { name: 'Masażer stóp Shiatsu',                         info: 'Obrotowe głowice masujące z podgrzewaniem – głęboki relaks.',                    inhalt: '1 urządzenie' },
+  e8:  { name: 'Zapasowe końcówki do frezarki (5 szt.)',       info: 'Drobne końcówki diamentowe do zestawu frezarki.',                                inhalt: '5 szt.' },
+  e9:  { name: 'Kąpiel parafinowa do stóp',                    info: 'Ciepła parafina dla aksamitnie gładkiej skóry – w zestawie 450 g wosku.',        inhalt: '1 urządzenie + wosk' },
+  e10: { name: 'Etui podróżne na urządzenia',                  info: 'Usztywniane etui na pilnik, frezarkę i akcesoria.',                              inhalt: '1 szt.' },
+  e11: { name: 'Akumulatorowa polerka do paznokci',            info: 'Poleruje i nabłyszcza – bezprzewodowa, z 3 końcówkami.',                         inhalt: '1 urządzenie + 3 końcówki' },
+  e12: { name: 'Pojemnik dezynfekujący UV',                    info: 'Dezynfekuje instrumenty w 8 minut – bez chemii.',                                inhalt: '1 urządzenie' },
+  e13: { name: 'Zapasowe rolki ścierające, drobne (3 szt.)',   info: 'Drobna granulacja do wykończenia po pilniku elektrycznym.',                      inhalt: '3 szt.' },
+  e14: { name: 'Mini-frezarka w formacie podróżnym',           info: 'Mała jak długopis – pełna moc w podróży.',                                       inhalt: '1 urządzenie + 2 końcówki' },
+  e15: { name: 'Elektryczny ogrzewacz stóp',                   info: 'Przytulny but rozgrzewający z 3 stopniami i automatycznym wyłączaniem.',         inhalt: '1 urządzenie' },
+  e16: { name: 'Masażer uciskowy na powietrze',                info: 'Delikatny, zmienny ucisk stóp i łydek – 2 mankiety.',                            inhalt: '1 urządzenie' },
+
+  /* --- Fußbäder & Zusätze --- */
+  b1:  { name: 'Sól do kąpieli stóp z Morza Martwego',         info: 'Sól bogata w minerały – relaksuje i pielęgnuje.',                                inhalt: '500 g' },
+  b2:  { name: 'Płyn do kąpieli stóp, rozmaryn',               info: 'Orzeźwiający dodatek do kąpieli dla zmęczonych stóp.',                           inhalt: '250 ml' },
+  b3:  { name: 'Musujące tabletki, lawenda (8 szt.)',          info: 'Jedna tabletka na kąpiel – kojący zapach lawendy.',                              inhalt: '8 tabletek' },
+  b4:  { name: 'Składana miska do kąpieli stóp',               info: 'Składana, oszczędza miejsce – z antypoślizgowym dnem.',                          inhalt: '1 szt.' },
+  b5:  { name: 'Kąpiel mleczna do stóp',                       info: 'Kremowy dodatek do kąpieli z proteinami mleka.',                                 inhalt: '400 ml' },
+  b6:  { name: 'Zasadowy puder do kąpieli stóp',               info: 'Zasadowe pH na długą, przyjemną kąpiel.',                                        inhalt: '300 g' },
+  b7:  { name: 'Termometr do kąpieli stóp',                    info: 'Pokazuje idealną temperaturę wody na pierwszy rzut oka.',                        inhalt: '1 szt.' },
+  b8:  { name: 'Szczotka do masażu w kąpieli',                 info: 'Miękkie wypustki masują podeszwę podczas kąpieli stóp.',                         inhalt: '1 szt.' },
+  b9:  { name: 'Olejek do kąpieli, eukaliptus',                info: 'Orzeźwiający olejek – wystarczą dwie nakrętki na kąpiel.',                       inhalt: '200 ml' },
+  b10: { name: 'Kompletny zestaw do kąpieli stóp',             info: 'Miska, sól, szczotka i ręcznik w zestawie.',                                     inhalt: 'Zestaw 4-częściowy' },
+  b11: { name: 'Sól do kąpieli stóp, lawenda',                 info: 'Kojąca lawenda do wieczornej kąpieli.',                                          inhalt: '500 g' },
+  b12: { name: 'Musujące tabletki, mięta (8 szt.)',            info: 'Orzeźwiająca mięta – jedna tabletka na kąpiel.',                                 inhalt: '8 tabletek' },
+  b13: { name: 'Płyn do kąpieli stóp, rumianek',               info: 'Łagodny klasyk do skóry wrażliwej.',                                             inhalt: '250 ml' },
+  b14: { name: 'Dodatek do kąpieli z olejkiem herbacianym',    info: 'Świeży dodatek dla zmęczonych stóp.',                                            inhalt: '100 ml' },
+  b15: { name: 'Miska do kąpieli stóp z wypustkami',           info: 'Dno z wypustkami masuje podeszwę już podczas kąpieli.',                          inhalt: '1 szt.' },
+  b16: { name: 'Duet do kąpieli: sól i olejek',                info: 'Sól z Morza Martwego i olejek eukaliptusowy w korzystnym zestawie.',             inhalt: 'Zestaw 2-częściowy' },
+
+  /* --- Nagelpflege --- */
+  n1:  { name: 'Olejek do paznokci z pipetą',                  info: 'Jojoba i witamina E – wzmacnia paznokcie i skórki.',                             inhalt: '10 ml' },
+  n2:  { name: 'Obcinacz do paznokci XL',                      info: 'Bardzo duża powierzchnia – także do mocnych paznokci u stóp.',                   inhalt: '1 szt.' },
+  n3:  { name: 'Pilnik szklany w etui',                        info: 'Wygładza i zabezpiecza krawędź paznokcia – ostry na całe życie.',                inhalt: '1 szt.' },
+  n4:  { name: 'Sztyft do pielęgnacji paznokci 2 w 1',         info: 'Sztyft z olejkiem i kopytko w jednym – w podróży.',                              inhalt: '1 szt.' },
+  n5:  { name: 'Lakier pielęgnacyjny, bezbarwny',              info: 'Wzmacniająca baza z jedwabistym połyskiem.',                                     inhalt: '10 ml' },
+  n6:  { name: 'Blok polerski, 4 strony',                      info: 'Piłowanie, wygładzanie, polerowanie, nabłyszczanie – jeden blok.',               inhalt: '1 szt.' },
+  n7:  { name: 'Żel do usuwania skórek',                       info: 'Rozpuszcza nadmiar skórek w 60 sekund.',                                         inhalt: '30 ml' },
+  n8:  { name: 'Serum naprawcze do paznokci',                  info: 'Widocznie odbudowuje łamliwe paznokcie w 4 tygodnie.',                           inhalt: '15 ml' },
+  n9:  { name: 'Zestaw pilników, różne granulacje (6 szt.)',   info: 'Sześć pilników – od grubego po superdrobny.',                                    inhalt: '6 szt.' },
+  n10: { name: 'Kompletny zestaw do pielęgnacji paznokci',     info: 'Olejek, obcinacz, pilnik szklany i sztyft w ozdobnym pudełku.',                  inhalt: 'Zestaw 4-częściowy' },
+  n11: { name: 'Olejek do skórek o zapachu róży',              info: 'Pielęgnuje skórki – z delikatnym zapachem róży.',                                inhalt: '10 ml' },
+  n12: { name: 'Sztyft wybielający do paznokci',               info: 'Widocznie odświeża wolny brzeg paznokcia.',                                      inhalt: '1 szt.' },
+  n13: { name: 'Nożyczki do paznokci, proste',                 info: 'Proste cięcie zapobiega wrastającym narożnikom.',                                inhalt: '1 szt. · 10 cm' },
+  n14: { name: 'Pilniki papierowe (10 szt.)',                  info: 'Opakowanie uzupełniające do codziennej pielęgnacji paznokci.',                   inhalt: '10 szt.' },
+  n15: { name: 'Lakier utwardzający paznokcie',                info: 'Odczuwalnie utwardza miękkie paznokcie w 2 tygodnie.',                           inhalt: '10 ml' },
+  n16: { name: 'Etui do manicure, 7-częściowe',                info: 'Wszystkie narzędzia do paznokci w etui na zamek.',                               inhalt: 'Zestaw 7-częściowy' },
+
+  /* --- Hornhaut & Peeling --- */
+  h1:  { name: 'Pumeks naturalny',                             info: 'Prawdziwy pumeks wulkaniczny – klasyk pod prysznic.',                            inhalt: '1 szt.' },
+  h2:  { name: 'Tarka do stóp, dwustronna',                    info: 'Strona gruba i drobna – na piętę i śródstopie.',                                 inhalt: '1 szt.' },
+  h3:  { name: 'Peeling do stóp z solą morską',                info: 'Drobny peeling solny z olejem migdałowym – aksamitna skóra.',                    inhalt: '150 ml' },
+  h4:  { name: 'Krem redukujący zrogowacenia',                 info: 'Codzienna pielęgnacja zapobiegająca nowym zrogowaceniom.',                       inhalt: '75 ml' },
+  h5:  { name: 'Skarpetki złuszczające (1 para)',              info: 'Nałożyć, zdjąć, podziwiać – odnowa skóry w 7 dni.',                              inhalt: '1 para' },
+  h6:  { name: 'Peeling cukrowy, wanilia',                     info: 'Delikatny peeling do skóry wrażliwej.',                                          inhalt: '200 ml' },
+  h7:  { name: 'Ceramiczny kamień do zrogowaceń',              info: 'Drobniejszy niż pumeks – idealny na wykończenie.',                               inhalt: '1 szt.' },
+  h8:  { name: 'Rękawica peelingująca z sizalu',               info: 'Rękawica z włókna naturalnego do stóp i nóg.',                                   inhalt: '1 szt.' },
+  h9:  { name: 'Maska Urea do stóp',                           info: 'Intensywna maska z 15 % mocznika – działa przez noc.',                           inhalt: '100 ml' },
+  h10: { name: 'Zestaw „Gładkie stopy”',                       info: 'Tarka, peeling i krem redukujący w zestawie.',                                   inhalt: 'Zestaw 3-częściowy' },
+  h11: { name: 'Zapasowe ostrza do skrobaka (10 szt.)',        info: 'Pasują do skrobaka do stóp – pojedynczo zafoliowane.',                           inhalt: '10 szt.' },
+  h12: { name: 'Szczotka do stóp z pumeksem',                  info: 'Włosie i pumeks w jednym uchwycie.',                                             inhalt: '1 szt.' },
+  h13: { name: 'Peeling kawowy, pobudzający',                  info: 'Mielona kawa i olej kokosowy – budzi zmęczone stopy.',                           inhalt: '200 ml' },
+  h14: { name: 'Balsam na zrogowacenia Urea 10 %',             info: 'Codzienna pielęgnacja po tarce lub pilniku.',                                    inhalt: '100 ml' },
+  h15: { name: 'Skarpetki złuszczające, podwójny zestaw',      info: 'Dwa zastosowania – na kurację co 3 miesiące.',                                   inhalt: '2 pary' },
+  h16: { name: 'Kuracja „Gładkie pięty” 7 dni',                info: 'Maska, balsam i instrukcja na cały tydzień.',                                    inhalt: 'Zestaw 2-częściowy' },
+
+  /* --- Komfort & Entlastung --- */
+  k1:  { name: 'Żelowe separatory palców (2 szt.)',            info: 'Miękki żel odciąża ściśnięte palce.',                                            inhalt: '2 szt.' },
+  k2:  { name: 'Pierścienie chroniące przed uciskiem (6 szt.)', info: 'Samoprzylepne poduszki przeciw otarciom w bucie.',                              inhalt: '6 szt.' },
+  k3:  { name: 'Żelowe poduszki pod pięty (para)',             info: 'Amortyzują każdy krok – do docięcia do każdego buta.',                           inhalt: '1 para' },
+  k4:  { name: 'Miękkie skarpetki wellness',                   info: 'Puszyste skarpetki z podeszwą antypoślizgową – po pielęgnacji czysta przyjemność.', inhalt: '1 para, rozm. 36–42' },
+  k5:  { name: 'Żelowe nakładki ochronne na palce (4 szt.)',   info: 'Chronią wrażliwe palce w każdym bucie.',                                         inhalt: '4 szt.' },
+  k6:  { name: 'Samoprzylepne poduszki pod śródstopie',        info: 'Odciążają przodostopie przy długim staniu.',                                     inhalt: '4 szt.' },
+  k7:  { name: 'Drewniany wałek do masażu',                    info: 'Napięcia można po prostu rozmasować – drewno bukowe.',                           inhalt: '1 szt.' },
+  k8:  { name: 'Duet piłek z wypustkami',                      info: 'Dwie piłki z wypustkami do aktywnego masażu w ciągu dnia.',                      inhalt: '2 szt.' },
+  k9:  { name: 'Żelowe wkładki komfortowe',                    info: 'Amortyzujące wkładki żelowe, do docięcia, rozm. 36–46.',                         inhalt: '1 para' },
+  k10: { name: 'Zestaw do gimnastyki stóp',                    info: 'Piłka, taśma i instrukcja ćwiczeń dla silnych stóp.',                            inhalt: 'Zestaw 3-częściowy' },
+  k11: { name: 'Lekkie skarpetki podtrzymujące (para)',        info: 'Delikatna kompresja na długie dni na nogach.',                                   inhalt: '1 para, rozm. 36–46' },
+  k12: { name: 'Poduszki pod pięty (para)',                    info: 'Miękka poduszka odciąża piętę przy każdym kroku.',                               inhalt: '1 para' },
+  k13: { name: 'Separatory do jogi palców (para)',             info: 'Rozciągają palce po długim dniu w butach.',                                      inhalt: '1 para' },
+  k14: { name: 'Mata do akupresury stóp',                      info: 'Pole z wypustkami do masażu stóp na stojąco.',                                   inhalt: '1 szt. · 35 × 35 cm' },
+  k15: { name: 'Termofor do stóp, rozmiar XXL',                info: 'Wyjątkowo szeroki – ogrzewa obie stopy jednocześnie.',                           inhalt: '1 szt. · 2 l' },
+  k16: { name: 'Skarpetki antypoślizgowe (2 pary)',            info: 'Pewny chwyt na śliskich podłogach – do prania w 60 °C.',                         inhalt: '2 pary, rozm. 36–46' },
+
+  /* --- Hygiene & Desinfektion --- */
+  d1:  { name: 'Żel do dezynfekcji rąk',                       info: 'Łagodny dla skóry, z aloesem – w podróży.',                                      inhalt: '100 ml' },
+  d2:  { name: 'Spray do dezynfekcji powierzchni',             info: 'Działa szybko – do urządzeń i powierzchni roboczych.',                           inhalt: '250 ml' },
+  d3:  { name: 'Rękawiczki jednorazowe nitrylowe (100)',       info: 'Bezpudrowe, wytrzymałe – rozmiary od S do XL.',                                  inhalt: '100 szt.' },
+  d4:  { name: 'Spray do stóp, antybakteryjny',                info: 'Odświeża i chroni – idealny po sporcie.',                                        inhalt: '150 ml' },
+  d5:  { name: 'Wanienka do dezynfekcji instrumentów',         info: 'Wanienka z wkładem sitowym do pielęgnacji instrumentów.',                        inhalt: '1 szt. · 1 l' },
+  d6:  { name: 'Koncentrat do dezynfekcji',                    info: 'Wystarcza na maksymalnie 25 l gotowego roztworu.',                               inhalt: '500 ml' },
+  d7:  { name: 'Podkłady jednorazowe (50 szt.)',               info: 'Chłonne i higieniczne – 40 × 60 cm.',                                            inhalt: '50 szt.' },
+  d9:  { name: 'Podróżny zestaw higieniczny',                  info: 'Żel, spray i chusteczki w kosmetyczce.',                                         inhalt: 'Zestaw 3-częściowy' },
+
+  /* --- Geschenke & Gutscheine --- */
+  g1:  { name: 'Bon na profesjonalną pielęgnację stóp',        info: 'Klasyczny prezent – pełna pielęgnacja podczas wizyty domowej.',                  inhalt: '1 bon' },
+  g2:  { name: 'Bon na masaż stóp',                            info: 'Prezent pełen odprężenia – dobroczynny masaż w domu.',                           inhalt: '1 bon' },
+  g3:  { name: 'Bon na masaż stref refleksyjnych',             info: 'Najobszerniejsza z usług – w prezencie.',                                        inhalt: '1 bon' },
+  g4:  { name: 'Bon wartościowy 25 €',                         info: 'Do wykorzystania na dowolne usługi i produkty.',                                 inhalt: '1 bon' },
+  g5:  { name: 'Zestaw rozpieszczający „Szczęśliwe stopy”',    info: 'Sól do kąpieli, krem i skarpetki wellness w ozdobnym pudełku.',                  inhalt: 'Zestaw 3-częściowy' },
+  g6:  { name: 'Pudełko prezentowe „Pierwsza pomoc dla stóp”', info: 'Peeling, balsam i olejek do paznokci – pięknie zapakowane.',                     inhalt: 'Zestaw 3-częściowy' },
+  g7:  { name: 'Zestaw męski „Fuß-Werk”',                      info: 'Tarka, krem i odświeżający spray dla Niego.',                                    inhalt: 'Zestaw 3-częściowy' },
+  g8:  { name: 'Kartka z kopertą',                             info: 'Pasuje do bonu – „Dla Ciebie”.',                                                 inhalt: '1 szt.' },
+  g9:  { name: 'Opakowanie prezentowe premium',                info: 'Pudełko, bibuła i wstążka – prezent gotowy do wręczenia.',                       inhalt: '1 szt.' },
+  g10: { name: 'Pakiet roczny „4 × pielęgnacja”',              info: 'Cztery wizyty profesjonalnej pielęgnacji stóp z góry – jedna w prezencie.',      inhalt: '4 bony' },
+  g11: { name: 'Bon wartościowy 50 €',                         info: 'Do wykorzystania na dowolne usługi i produkty.',                                 inhalt: '1 bon' },
+  g12: { name: 'Bon wartościowy 100 €',                        info: 'Duży prezent – do dowolnego wykorzystania.',                                     inhalt: '1 bon' },
+  g13: { name: 'Bon podwójny „We dwoje”',                      info: 'Dwie wizyty profesjonalnej pielęgnacji stóp – np. dla par.',                     inhalt: '2 bony' },
+  g14: { name: 'Zestaw prezentowy „Zimowe stopy”',             info: 'Rozgrzewający balsam, miękkie skarpetki i sól do kąpieli.',                      inhalt: 'Zestaw 3-częściowy' },
+  g15: { name: 'Mała radość',                                  info: 'Poręczny krem do stóp z kartką – drobny upominek.',                              inhalt: 'Zestaw 2-częściowy' },
+  g16: { name: 'Bon e-mailem',                                 info: 'Wysyłka od razu – idealny na ostatnią chwilę.',                                  inhalt: '1 bon (PDF)' }
+};

@@ -1,0 +1,11 @@
+# Norberts mobile Fusspflege
+# STAGING-SPERRE: Solange die Seite Muster-Artikel und Beispiel-Bewertungen
+# traegt, soll sie nicht in Suchmaschinen auftauchen.
+# VOR DEM LIVEGANG: die zwei Disallow-Zeilen loeschen und "Allow" freigeben.
+User-agent: *
+Disallow: /
+
+# Ab Livegang stattdessen:
+# User-agent: *
+# Allow: /
+# Sitemap: https://www.norberts-mobile-fusspflege.de/sitemap.xml
