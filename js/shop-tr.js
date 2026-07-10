@@ -22,7 +22,8 @@ window.NF_TEXTE = {
 };
 
 window.NF_KATEGORIEN = {
-  w: 'Aletler, Enstrümanlar ve Hijyen',
+  w: 'Aletler ve Enstrümanlar',
+  d: 'Hijyen ve Dezenfeksiyon',
   c: 'Kremler ve Balsamlar',
   e: 'Elektrikli Cihazlar',
   b: 'Ayak Banyoları ve Katkılar',
@@ -42,6 +43,14 @@ window.NF_UEBERSETZUNG = {
   w7:  { name: 'Çift Uçlu Tırnak Eti İticisi',          info: 'Tırnak etini iter ve gevşetir – iki çalışma ucu.',                           inhalt: '1 adet' },
   w9:  { name: 'Alet Temizleme Fırçası',                info: 'İnce pirinç kıllar – törpü ve frezeleri temiz tutar.',                       inhalt: '1 adet' },
   w10: { name: 'Ayak Bakımı Başlangıç Seti',            info: 'En önemli 6 alet kılıf içinde – başlamak için ideal.',                       inhalt: '6 parçalı set' },
+  w3:  { name: 'Bıçak Korumalı Nasır Rendesi',          info: 'Korumalı bıçak, sakin kullanım – yalnızca deneyimli eller için.',            inhalt: '1 adet + 5 bıçak' },
+  w8:  { name: 'Çift Taraflı Safir Törpü',              info: 'Kaba ve ince yüz – tek harekette kısaltır ve pürüzsüzleştirir.',             inhalt: '1 adet · 18 cm' },
+  w11: { name: 'Paslanmaz Çelik Nasır Törpüsü',         info: 'Ergonomik sap, değiştirilebilir törpü yaprağı.',                             inhalt: '1 adet + 10 yaprak' },
+  w12: { name: 'Hazneli Tırnak Klipseri',               info: 'Hiçbir tırnak parçası etrafa sıçramaz – açılır hazne.',                      inhalt: '1 adet' },
+  w13: { name: 'Sivri Uçlu Köşe Pensi',                 info: 'Tırnak köşeleri için ince uç – temiz ve hassas.',                            inhalt: '1 adet · 11 cm' },
+  w14: { name: 'Saplı Ponza Taşı',                      info: 'Ahşap sapta doğal ponza – topuğa da rahatça ulaşır.',                        inhalt: '1 adet' },
+  w15: { name: 'Alet Saklama Kutusu',                   info: 'Bölmeli havalandırmalı kutu – aletleri kuru tutar.',                         inhalt: '1 adet · 20 × 12 cm' },
+  w16: { name: '10 Parçalı Alet Seti',                  info: 'Pensler, törpüler, itici ve makas rulo kılıf içinde.',                       inhalt: '10 parçalı set' },
 
   /* --- Cremes & Balsame --- */
   c1:  { name: 'Ayak Kremi Üre %10',                    info: 'Kuru ve yıpranmış ayaklar için yoğun nem.',                                  inhalt: '100 ml' },
@@ -160,6 +169,14 @@ window.NF_UEBERSETZUNG = {
   d6:  { name: 'Dezenfektan Konsantresi',               info: '25 litreye kadar kullanıma hazır çözelti elde edilir.',                      inhalt: '500 ml' },
   d7:  { name: 'Tek Kullanımlık Örtü (50\'li)',         info: 'Yüksek emici ve hijyenik – 40 × 60 cm.',                                     inhalt: '50 adet' },
   d9:  { name: 'Hijyen Seyahat Seti',                   info: 'Jel, sprey ve mendiller makyaj çantasında.',                                 inhalt: '3 parçalı set' },
+  d8:  { name: 'Tek Kullanımlık Havlu (100\'lü)',       info: 'Yumuşak ve emici – ayak banyosundan sonra kullanıp atın.',                   inhalt: '100 adet' },
+  d10: { name: 'Dezenfeksiyon Mendili (80\'li)',        info: 'Kutusunda kullanıma hazır – arada cihazlar için.',                           inhalt: '80 mendil' },
+  d11: { name: 'Eller için Koruyucu Krem',              info: 'Sık dezenfeksiyondan sonra – hızla emilir.',                                 inhalt: '100 ml' },
+  d12: { name: 'Boş Sprey Şişesi, 250 ml',              info: 'Etiketlenebilir, ince sprey – konsantre için.',                              inhalt: '1 adet · 250 ml' },
+  d13: { name: 'Ağız-Burun Maskesi (50\'li)',           info: 'Üç katlı, burun teli ile – Tip II.',                                         inhalt: '50 adet' },
+  d14: { name: 'Alet Temizleme Tableti',                info: 'Litre başına bir tablet – dezenfeksiyondan önce kalıntıları çözer.',         inhalt: '30 tablet' },
+  d15: { name: 'Tek Kullanımlık Törpü (50\'li)',        info: 'Her müşteriye taze bir törpü – hijyenik ve pratik.',                         inhalt: '50 adet' },
+  d16: { name: 'Ev için Hijyen Seti',                   info: 'El jeli, yüzey spreyi ve tek kullanımlık örtüler set halinde.',              inhalt: '3 parçalı set' },
 
   /* --- Geschenke & Gutscheine --- */
   g1:  { name: 'Profesyonel Ayak Bakımı Hediye Çeki',   info: 'Hediye etmenin klasiği – ev ziyaretinde eksiksiz bakım.',                    inhalt: '1 hediye çeki' },

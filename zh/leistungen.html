@@ -18,35 +18,38 @@
 <meta property="og:title" content="服务项目与价格 – Norberts mobile Fußpflege 斯图加特">
 <meta property="og:description" content="斯图加特上门足部美容护理的服务项目与价格:专业足部美容护理 48 €、足部按摩 30 €、足底反射区舒缓按摩 57 €——上门服务。">
 <meta property="og:url" content="https://www.norberts-mobile-fusspflege.de/zh/leistungen.html">
-<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg">
+<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="../bilder/logo-klein.png">
-<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css?v=81">
+<link rel="icon" type="image/png" href="../bilder/logo-klein.png?v=1">
+<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="../style.css?v=151">
 <style>body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif}h1,h2,h3,h4,.marke-name{font-family:"PingFang SC","Microsoft YaHei",serif}</style>
-<script src="../js/thema.js"></script>
-<script src="../js/main.js?v=20" defer></script>
+<script src="../js/thema.js?v=2"></script>
+<script src="../js/main.js?v=28" defer></script>
 </head>
-<body>
+<body class="seite-leistungen">
+<!-- ================= Bild-Hintergrund (fest, je Thema hell/dunkel) ================= -->
+<div class="hintergrund-bild" aria-hidden="true"></div>
+
 
 <!-- ================= Kopfleiste ================= -->
 <header class="kopf">
   <div class="rahmen kopf-innen">
     <a class="marke" href="index.html" aria-label="Norberts mobile Fußpflege – 返回首页">
       <span class="marke-zeichen">
-        <img src="../bilder/logo-klein.png" alt="标志:Norberts mobile Fußpflege">
+        <img src="../bilder/logo-frei.png?v=1" alt="标志:Norberts mobile Fußpflege">
       </span>
     </a>
-    <nav class="kopf-schnell" aria-label="Schnell-Navigation">
+    <nav class="kopf-schnell" aria-label="快速导航">
     <a href="index.html">首页</a>
     <a href="leistungen.html" aria-current="page">服务项目</a>
     </nav>
     <nav class="hauptnav" id="hauptnav" aria-label="主导航">
       <ul>
-        <li><a href="index.html">首页</a></li>
+        <li><a href="index.html" lang="zh">首页</a></li>
         <li><a href="leistungen.html" aria-current="page">服务项目</a></li>
         <li><a href="produkte.html">产品</a></li>
         <li><a href="ueber-mich.html">关于我</a></li>
@@ -55,7 +58,7 @@
       </ul>
     </nav>
     <div class="kopf-rechts">
-      <button class="nav-knopf" type="button" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">菜单</span></button>
+      <button class="nav-knopf" type="button" aria-label="菜单" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">菜单</span></button>
       <a class="korb-knopf" href="warenkorb.html" aria-label="查看购物车" title="购物车">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 4h2l2.4 12h10.2l2.4-9H6"/></svg>
         <span class="korb-zahl" hidden>0</span>
@@ -84,15 +87,12 @@
 <!-- ================= Seitenkopf ================= -->
 <section class="seitenkopf">
   <div class="rahmen">
-    <span class="ueberzeile">服务项目与价格</span>
-    <h1>价格透明的足部护理</h1>
-    <p>足部美容护理的全部项目一目了然——价格透明、
-    公道,并含明确的上门路费规定。</p>
+    <h1 class="ueberzeile">服务项目与价格<span class="kopf-titel">价格透明的足部护理</span></h1>
   </div>
 </section>
 
 <!-- ================= Leistungs-Karten ================= -->
-<section class="abschnitt" style="padding-top:16px;">
+<section class="abschnitt abschnitt-tafel" style="padding-top:16px;">
   <div class="rahmen">
     <div class="karten-raster">
       <article class="karte leistung lk-blau einblenden" data-maske="maske-fusspflege" role="button" tabindex="0" aria-haspopup="dialog">
@@ -237,12 +237,10 @@
 </section>
 
 <!-- ================= Preistabelle ================= -->
-<section class="abschnitt abschnitt-hell">
+<section class="abschnitt abschnitt-hell abschnitt-tafel">
   <div class="rahmen">
     <div class="abschnitt-kopf einblenden">
-      <span class="ueberzeile">价目表</span>
-      <h2>所有价格一目了然</h2>
-      <p>公道、固定的价格——您事先就清楚地知道费用。</p>
+      <h2 class="ueberzeile">价目表</h2>
     </div>
     <div class="tabelle-rolle einblenden">
     <table class="preis-tabelle">
@@ -280,10 +278,7 @@
 <section class="abschnitt" id="abgrenzung">
   <div class="rahmen">
     <div class="abschnitt-kopf einblenden">
-      <span class="ueberzeile">重要须知</span>
-      <h2>足部美容护理——是什么意思?</h2>
-      <p>我护理的是健康的双足。为了让您清楚了解服务范围,
-      这里明确说明与医学足部护理(足病学,Podologie)的界限。</p>
+      <h2 class="ueberzeile">重要须知<span class="kopf-titel">足部美容护理——是什么意思?</span></h2>
     </div>
     <div class="vergleich einblenden">
       <div class="vergleich-tafel vt-ja">
@@ -351,11 +346,14 @@
 <!-- ================= Fußleiste ================= -->
 <footer class="fuss">
   <div class="rahmen fuss-innen">
-    <span>© <span data-jahr>2026</span> Norberts mobile Fußpflege</span>
     <span class="fuss-links"><a href="../impressum.html">法律声明</a> · <a href="../datenschutz.html">隐私政策</a></span>
   </div>
 </footer>
 
 <!-- ================= Mobile Aktionsleiste ================= -->
+<!-- Reichweitenmessung: GoatCounter, lokal ausgeliefert, ohne Cookies
+     und ohne Zugriff auf den Endgeräte-Speicher (siehe DOKU). -->
+<script data-goatcounter="https://norbert.goatcounter.com/count"
+        src="../js/extern/goatcounter.js?v=1" defer></script>
 </body>
 </html>

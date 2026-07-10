@@ -18,34 +18,37 @@
 <meta property="og:title" content="آراء العملاء والأسئلة الشائعة – Norberts mobile Fußpflege">
 <meta property="og:description" content="هذا ما تقوله العميلات والعملاء عن Norberts mobile Fußpflege – مع إجابات عن الأسئلة الشائعة حول الزيارة المنزلية والنظافة وسير الموعد.">
 <meta property="og:url" content="https://www.norberts-mobile-fusspflege.de/ar/kundenstimmen.html">
-<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg">
+<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="../bilder/logo-klein.png">
-<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css?v=81">
-<script src="../js/thema.js"></script>
-<script src="../js/main.js?v=20" defer></script>
+<link rel="icon" type="image/png" href="../bilder/logo-klein.png?v=1">
+<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="../style.css?v=151">
+<script src="../js/thema.js?v=2"></script>
+<script src="../js/main.js?v=28" defer></script>
 </head>
-<body>
+<body class="seite-kundenstimmen">
+<!-- ================= Bild-Hintergrund (fest, je Thema hell/dunkel) ================= -->
+<div class="hintergrund-bild" aria-hidden="true"></div>
+
 
 <!-- ================= Kopfleiste ================= -->
 <header class="kopf">
   <div class="rahmen kopf-innen">
     <a class="marke" href="index.html" aria-label="Norberts mobile Fußpflege – إلى الصفحة الرئيسية">
       <span class="marke-zeichen">
-        <img src="../bilder/logo-klein.png" alt="الشعار: Norberts mobile Fußpflege">
+        <img src="../bilder/logo-frei.png?v=1" alt="الشعار: Norberts mobile Fußpflege">
       </span>
     </a>
-    <nav class="kopf-schnell" aria-label="Schnell-Navigation">
+    <nav class="kopf-schnell" aria-label="تنقل سريع">
     <a href="index.html">الرئيسية</a>
     <a href="leistungen.html">الخدمات</a>
     </nav>
     <nav class="hauptnav" id="hauptnav" aria-label="التنقل الرئيسي">
       <ul>
-        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="index.html" lang="ar" dir="rtl">الرئيسية</a></li>
         <li><a href="leistungen.html">الخدمات</a></li>
         <li><a href="produkte.html">المنتجات</a></li>
         <li><a href="ueber-mich.html">من أنا</a></li>
@@ -54,7 +57,7 @@
       </ul>
     </nav>
     <div class="kopf-rechts">
-      <button class="nav-knopf" type="button" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">القائمة</span></button>
+      <button class="nav-knopf" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">القائمة</span></button>
       <a class="korb-knopf" href="warenkorb.html" aria-label="عرض سلة التسوق" title="سلة التسوق">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 4h2l2.4 12h10.2l2.4-9H6"/></svg>
         <span class="korb-zahl" hidden>0</span>
@@ -83,15 +86,12 @@
 <!-- ================= Seitenkopf ================= -->
 <section class="seitenkopf">
   <div class="rahmen">
-    <span class="ueberzeile">آراء العملاء والأسئلة الشائعة</span>
-    <h1>الأقدام الراضية تتحدث عن نفسها</h1>
-    <p>تجارب عميلاتي وعملائي – وإجابات عن الأسئلة
-    الأكثر تكراراً.</p>
+    <h1 class="ueberzeile">آراء العملاء والأسئلة الشائعة</h1>
   </div>
 </section>
 
 <!-- ================= Kundenstimmen ================= -->
-<section class="abschnitt" style="padding-top:16px;">
+<section class="abschnitt abschnitt-tafel" style="padding-top:16px;">
   <div class="rahmen">
 
     <!-- Stimmen-Band: 2 Reihen, seitlich zu weiteren Stimmen rollbar -->
@@ -282,7 +282,7 @@
         <div class="bewertung-zeile">
           <div class="feld">
             <label id="sterne-titel">ما مدى رضاكم؟ *</label>
-            <div class="sterne-wahl" aria-labelledby="sterne-titel">
+            <div class="sterne-wahl" aria-labelledby="sterne-titel" aria-describedby="sterne-fehler">
               <button type="button" class="stern" data-wert="1" aria-label="نجمة واحدة">★</button>
               <button type="button" class="stern" data-wert="2" aria-label="نجمتان">★</button>
               <button type="button" class="stern" data-wert="3" aria-label="3 نجوم">★</button>
@@ -290,6 +290,7 @@
               <button type="button" class="stern" data-wert="5" aria-label="5 نجوم – راضٍ جداً">★</button>
               <input type="hidden" name="sterne" id="b-sterne">
             </div>
+            <p class="feld-fehler" id="sterne-fehler" role="alert" hidden>يرجى اختيار تقييم من 1 إلى 5 نجوم.</p>
           </div>
           <div class="feld">
             <label for="b-name">اسمكم *</label>
@@ -321,8 +322,7 @@
 <section class="abschnitt abschnitt-hell">
   <div class="rahmen">
     <div class="abschnitt-kopf einblenden">
-      <span class="ueberzeile">الأسئلة الشائعة</span>
-      <h2>جدير بالمعرفة قبل الموعد الأول</h2>
+      <h2 class="ueberzeile">الأسئلة الشائعة</h2>
     </div>
     <div class="faq einblenden">
       <div class="faq-frage" role="button" tabindex="0" data-maske="maske-faq-hausbesuch" aria-haspopup="dialog">كيف تسير الزيارة المنزلية؟</div>
@@ -515,7 +515,7 @@
         موعداً جديداً يناسبكم.</p>
         <div class="maske-knoepfe">
           <a class="knopf knopf-voll" href="tel:+4917686961032" dir="ltr">0176&nbsp;8696&nbsp;1032</a>
-          <a class="knopf knopf-whatsapp" href="https://wa.me/491735904496" rel="noopener">مراسلة عبر واتساب</a>
+          <a class="knopf knopf-whatsapp" href="https://wa.me/4917686961032" rel="noopener">مراسلة عبر واتساب</a>
         </div>
       </div>
     </dialog>
@@ -528,11 +528,14 @@
 <!-- ================= Fußleiste ================= -->
 <footer class="fuss">
   <div class="rahmen fuss-innen">
-    <span>© <span data-jahr>2026</span> Norberts mobile Fußpflege</span>
     <span class="fuss-links"><a href="../impressum.html">بيانات الناشر</a> · <a href="../datenschutz.html">حماية البيانات</a></span>
   </div>
 </footer>
 
 <!-- ================= Mobile Aktionsleiste ================= -->
+<!-- Reichweitenmessung: GoatCounter, lokal ausgeliefert, ohne Cookies
+     und ohne Zugriff auf den Endgeräte-Speicher (siehe DOKU). -->
+<script data-goatcounter="https://norbert.goatcounter.com/count"
+        src="../js/extern/goatcounter.js?v=1" defer></script>
 </body>
 </html>

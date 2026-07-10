@@ -61,8 +61,9 @@
 
 /* ============================================================
    Design-Tokens – Thema HELL (Standard, bewusst gedämpft)
-   Palette: Petrol-Blau + Gold, abgestimmt auf das Kunden-Logo
-   (bilder/logo.png: blaue Füße, goldene Schrift)
+   Palette: Petrol-Blau + Gold. Sie stammt aus dem früheren
+   Kunden-Logo; das heutige Logo (bilder/logo.png: goldenes
+   Wappen auf schwarzer Kachel) steht bewusst für sich.
    ============================================================ */
 :root {
   color-scheme: light;
@@ -70,8 +71,9 @@
   /* Flächen */
   --grund:       #eeece6;   /* Seitengrund – warmes, ruhiges Papierweiß */
   --flaeche:     #faf9f5;   /* Karten, Formulare, Kopfleiste */
+  --tafel:       #ffffff;   /* Tafeln über den Hintergrundbildern */
+  --karte-auf-tafel: #f1eee6;   /* Karten IN einer Tafel — abgesetzt vom Grund */
   --sektion:     #eeece6;   /* eine Ebene: gleiche Fläche wie der Grund */
-  --kopf-hg:     rgba(250, 249, 245, 0.95);
 
   /* Marke */
   --marke:       #205a7d;   /* Knöpfe, Badges (weiße Schrift darauf) */
@@ -82,6 +84,7 @@
   --akzent-hover:#102f42;
   --sand:        #a8823c;   /* Gold-Akzent wie im Logo */
   --stern:       #e9a800;   /* typisches Bewertungs-Gelb (Sterne) */
+  --stern-leer:  #8a8d88;   /* leerer Stern: 3,36:1, erfüllt WCAG 1.4.11 */
 
   /* Text */
   --text:        #000000;
@@ -113,7 +116,6 @@
   --schatten-gr: inset 0 1px 0 rgba(255, 255, 255, 0.65),
                  0 3px 6px  hsl(202deg 30% 22% / 0.15),
                  0 18px 38px hsl(202deg 30% 22% / 0.16);
-  --ring:        rgba(250, 249, 245, 0.92);
   --boden:       hsl(202deg 30% 22% / 0.22);
   --abstand:     clamp(26px, 3.5vw, 40px);
 }
@@ -126,8 +128,9 @@
 
   --grund:       #12191f;
   --flaeche:     #1b252d;
+  --tafel:       #000000;   /* Tafeln: tief schwarz */
+  --karte-auf-tafel: #131b22;   /* Karten IN einer Tafel — abgesetzt vom Grund */
   --sektion:     #12191f;
-  --kopf-hg:     rgba(18, 25, 31, 0.93);
 
   --marke:       #2e6e94;
   --marke-hover: #3a83ad;
@@ -137,6 +140,7 @@
   --akzent-hover:#a5cde5;
   --sand:        #d9bd77;
   --stern:       #f2c14e;
+  --stern-leer:  #7b8189;   /* 3,96:1 auf --flaeche */
 
   --text:        #e1e5e8;
   --text-leise:  #a4b1ba;
@@ -157,7 +161,6 @@
   --schatten-gr: inset 0 1px 0 rgba(255, 255, 255, 0.09),
                  0 3px 6px  rgba(0, 0, 0, 0.55),
                  0 20px 42px rgba(0, 0, 0, 0.6);
-  --ring:        rgba(8, 10, 13, 0.9);
   --boden:       rgba(0, 0, 0, 0.5);
 }
 
@@ -232,15 +235,31 @@ img { max-width: 100%; display: block; }
 }
 
 /* ---------- Kopfleiste: schwarz-metallisch-glasig ---------- */
+/* Metallisch schwarz — Kopf- und Fußleiste teilen sich den Grund. In BEIDEN
+   Themen dieselbe Farbe (Hasans Vorgabe). Drei Lagen von oben nach unten: ein
+   Streiflicht quer über die Leiste, eine sehr feine senkrechte Bürstung,
+   darunter tiefes Schwarz mit etwas Tiefe. Deckend, damit die Leisten über den
+   Hintergrundbildern ruhig stehen — deshalb kein `backdrop-filter`. */
+.kopf,
+.fuss {
+  background-color: #05070a;
+  background-image:
+    linear-gradient(100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.045) 40%,
+      rgba(255, 255, 255, 0.085) 50%,
+      rgba(255, 255, 255, 0.035) 60%,
+      rgba(255, 255, 255, 0) 100%),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.035) 0 1px,
+      rgba(255, 255, 255, 0) 1px 3px),
+    linear-gradient(180deg, #14181d 0%, #05070a 60%, #000 100%);
+}
+
 .kopf {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: linear-gradient(100deg,
-    rgba(10, 12, 15, 0.93) 0%,
-    rgba(42, 46, 52, 0.88) 45%,
-    rgba(13, 16, 19, 0.93) 100%);
-  backdrop-filter: blur(10px);
   border-block-end: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
@@ -249,7 +268,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  min-height: 66px;
+  min-height: 58px;
   position: relative;
 }
 .marke {
@@ -260,12 +279,12 @@ img { max-width: 100%; display: block; }
   min-width: 0;
 }
 .marke-zeichen {
-  width: 62px; height: 62px;
+  width: 60px; height: 60px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
 }
-.marke-zeichen img { width: 62px; height: 62px; object-fit: contain; }
+.marke-zeichen img { width: 60px; height: 60px; object-fit: contain; }
 .marke-text { line-height: 1.2; min-width: 0; }
 .marke-name {
   font-family: var(--schrift-titel);
@@ -371,7 +390,7 @@ img { max-width: 100%; display: block; }
 .kopf-rechts {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   flex-shrink: 0;
 }
 
@@ -468,7 +487,9 @@ img { max-width: 100%; display: block; }
 }
 .held-raster {
   display: grid;
-  grid-template-columns: 1fr;
+  /* `1fr` ist `minmax(auto,1fr)` — ein min-content-Kind sprengt die Spalte.
+     Bei 320 px lief der Held 23 px über den Rand hinaus. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 30px;
   align-items: center;
 }
@@ -488,29 +509,34 @@ img { max-width: 100%; display: block; }
 .held-marke svg { color: var(--akzent); }
 .held-firma {
   font-family: var(--schrift-titel);
-  font-size: clamp(22px, 6.4vw, 39px);
+  font-size: clamp(22px, 5.6vw, 34px);
   font-weight: 700;
-  color: var(--titel);
+  color: var(--sand);          /* Gold wie im Logo */
   line-height: 1.25;
   margin-block-end: 18px;
 }
 .held-firma .firma-zusatz {
   display: block;
   font-family: var(--schrift-text);
-  font-size: clamp(15px, 3vw, 17px);
+  font-size: clamp(14px, 2.4vw, 15px);
   font-weight: 600;
   color: var(--text-leise);
   margin-block-start: 6px;
 }
 .held-slogan {
   font-family: var(--schrift-titel);
-  font-size: clamp(19px, 4.4vw, 26px);
+  font-size: clamp(18px, 3.6vw, 23px);
   font-weight: 600;
   color: var(--titel);
   line-height: 1.35;
   margin-block-end: 20px;
 }
 .held .zeile-fest { white-space: nowrap; }
+/* Auf sehr schmalen Geräten (320 px) ragte „Norberts mobile Fußpflege" 2 px
+   über den Rand. Die Zeile bleibt fest, die Schrift wird minimal kleiner. */
+@media (max-width: 345px) {
+  .held-firma { font-size: 20px; }
+}
 .held p.gross {
   font-size: 19px;
   color: var(--text-leise);
@@ -533,20 +559,27 @@ img { max-width: 100%; display: block; }
 .held-aktionen .held-knoepfe { margin-block-end: 0; }
 
 /* Sozial-Leiste: vier gleich große, kleinere Knöpfe — außen bündig mit den
-   Haupt-Knöpfen darüber, deutlich untergeordnet (kleiner in Höhe und Breite) */
+   Haupt-Knöpfen darüber, deutlich untergeordnet (kleiner in Höhe). Die beiden
+   `.sozial-paar` lösen sich per `display: contents` auf, damit alle vier
+   Kacheln im selben Raster liegen: gleiche Breite, überall gleicher Abstand. */
 .sozial-leiste {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* zwei Hälften wie die Haupt-Knöpfe darüber */
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
-.sozial-paar {
-  display: flex;
-  justify-content: center;         /* Paar mittig unter seinem Haupt-Knopf */
-  gap: 14px;
+.sozial-paar { display: contents; }
+.sozial-knopf::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block: -3px;              /* 38 + 2×3 = 44 px Tastfläche */
 }
+/* Höhe 38 px ist Hasans Design-Vorgabe. Die Klickfläche wird über ein
+   unsichtbares Pseudo-Element auf 44 px gebracht, ohne die Optik zu ändern. */
 .sozial-knopf {
+  position: relative;
   height: 38px;
-  flex: 0 1 96px;
+  width: 100%;
   border-radius: var(--radius-kl);
   display: grid;
   place-items: center;
@@ -557,17 +590,24 @@ img { max-width: 100%; display: block; }
 }
 .sozial-knopf svg { width: 20px; height: 20px; }
 .sozial-knopf:hover { transform: translateY(-2px); box-shadow: var(--schatten-gr); color: #fff; }
-.sozial-whatsapp { background: #25d366; }
+/* Weiß auf dem hellen Marken-Grün #25d366 ergibt 1,98:1 — das Symbol verschwindet.
+   Darum derselbe dunklere Grünton wie beim Textknopf `.knopf-whatsapp` (5,3:1). */
+.sozial-whatsapp { background: #1f7a4d; }
 .sozial-youtube  { background: #ff0000; }
 .sozial-tiktok   { background: #161823; border: 1px solid var(--linie); }
 .sozial-kontakt  { background: var(--marke); }
+/* Die Held-Knöpfe bleiben EINZEILIG. In en/ru/tr ist die Beschriftung länger
+   als im Deutschen („Request an appointment"); ohne `nowrap` wurde der Knopf
+   zweizeilig, wuchs in der Höhe und schob die Sozial-Leiste nach unten. Die
+   Schrift skaliert stattdessen mit der Spaltenbreite. */
 .held-knoepfe .knopf {
   width: 100%;
   max-width: 300px;
   margin-inline: auto;
   min-height: 46px;
-  padding: 9px 20px;
+  padding: 9px 18px;
   font-size: 16.5px;
+  white-space: nowrap;
 }
 .held-telefon { font-size: 17px; color: var(--text-leise); }
 .held-telefon a { font-weight: 700; font-size: 19px; }
@@ -614,7 +654,7 @@ img { max-width: 100%; display: block; }
 /* Tafel wie die Schritt-Karten: Symbol-Kreis außen oben angesetzt */
 .vertrauen-punkt {
   position: relative;
-  background: var(--flaeche);
+  background: var(--tafel);
   border: 1px solid var(--linie);
   border-radius: var(--radius);
   box-shadow: var(--schatten);
@@ -630,7 +670,6 @@ img { max-width: 100%; display: block; }
   padding: 10px;
   border-radius: 50%;
   color: #fff;
-  box-shadow: 0 0 0 5px var(--ring);
 }
 
 /* Farbige Symbol-Kreise */
@@ -647,7 +686,7 @@ img { max-width: 100%; display: block; }
 .abschnitt { padding-block: var(--abstand); }
 main > section:last-child { padding-block-end: 44px; }  /* ruhiger Abschluss vor der Fußleiste */
 .abschnitt-hell { background: transparent; }
-.abschnitt-kopf { max-width: 700px; margin-inline: auto; margin-block-end: 36px; text-align: center; }
+.abschnitt-kopf { max-width: 700px; margin-inline: 0; margin-block-end: 36px; text-align: start; }
 .abschnitt-kopf p { color: var(--text-leise); font-size: 18px; margin-block-start: 12px; }
 .ueberzeile {
   display: block;
@@ -708,14 +747,17 @@ main > section:last-child { padding-block-end: 44px; }  /* ruhiger Abschluss vor
   .leistung { border-color: color-mix(in srgb, var(--lk) 35%, var(--linie)); border-top-color: var(--lk); }
 }
 .leistung:focus-visible { outline: 3px solid var(--lk); outline-offset: 3px; }
-.lk-blau  { --lk: #2f8fc0; }
-.lk-gruen { --lk: #3e8e5a; }
-.lk-gold  { --lk: #a8823c; }
-:root[data-theme="dunkel"] .lk-blau  { --lk: #3d84a8; }
-:root[data-theme="dunkel"] .lk-gruen { --lk: #4a8a63; }
-:root[data-theme="dunkel"] .lk-gold  { --lk: #a68844; }
+/* Kennfarbe `--lk` färbt Rahmen und Symbolfläche. Für Text ist sie zu hell:
+   auf Weiß kam der Titel nur auf 3,1–3,6:1 (nötig 4,5:1). Deshalb eine eigene,
+   dunklere Text-Variante `--lk-text` — das Aussehen der Karte bleibt gleich. */
+.lk-blau  { --lk: #2f8fc0; --lk-text: #1f6a92; }
+.lk-gruen { --lk: #3e8e5a; --lk-text: #2e6e45; }
+.lk-gold  { --lk: #a8823c; --lk-text: #7d5f24; }
+:root[data-theme="dunkel"] .lk-blau  { --lk: #3d84a8; --lk-text: #6fb5d8; }
+:root[data-theme="dunkel"] .lk-gruen { --lk: #4a8a63; --lk-text: #6fbf87; }
+:root[data-theme="dunkel"] .lk-gold  { --lk: #a68844; --lk-text: #d9bd77; }
 .leistung .karte-symbol { background: var(--lk); color: #fff; }
-.leistung h3 { color: var(--lk); }
+.leistung h3 { color: var(--lk-text); }
 .leistung p { margin-block-end: 18px; }
 .karte-fuss {
   margin-block-start: auto;      /* Preiszeile in allen Tafeln unten bündig */
@@ -827,7 +869,7 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 .schritt {
   position: relative;
-  background: var(--flaeche);
+  background: var(--tafel);
   border: 1px solid var(--linie);
   border-radius: var(--radius);
   padding: 54px 22px 24px;
@@ -845,7 +887,6 @@ body:has(dialog[open]) { overflow: hidden; }
   font: 700 20px var(--schrift-text);
   display: grid;
   place-items: center;
-  box-shadow: 0 0 0 5px var(--ring);
 }
 .schritt h3 { font-size: 19px; margin-block-end: 8px; }
 .schritt p { font-size: 16.5px; color: var(--text-leise); margin: 0; }
@@ -876,7 +917,7 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 .vergleich-tafel {
   --vt: var(--marke);            /* Kennfarbe der Tafel */
-  background: var(--flaeche);
+  background: var(--tafel);
   border: 1px solid var(--linie);
   border-top: 4px solid var(--vt);
   border-radius: var(--radius);
@@ -886,14 +927,16 @@ body:has(dialog[open]) { overflow: hidden; }
 @supports (color: color-mix(in srgb, red, blue)) {
   .vergleich-tafel { border-color: color-mix(in srgb, var(--vt) 35%, var(--linie)); border-top-color: var(--vt); }
 }
-.vt-ja    { --vt: #3e8e5a; }
-.vt-nein  { --vt: #b5544a; }
-.vt-warum { --vt: #c26a35; grid-column: 1 / -1; padding-block-end: 20px; }
-:root[data-theme="dunkel"] .vt-ja    { --vt: #4a8a63; }
-:root[data-theme="dunkel"] .vt-nein  { --vt: #b2645b; }
-:root[data-theme="dunkel"] .vt-warum { --vt: #cd8352; }
+/* wie bei `--lk`: `--vt` färbt Rahmen und Zeichen, `--vt-text` die Überschrift.
+   Das Bewertungs-Gold kam als Titel auf Weiß nur auf 2,1:1. */
+.vt-ja    { --vt: #3e8e5a; --vt-text: #2e6e45; }
+.vt-nein  { --vt: #b5544a; --vt-text: #93392f; }
+.vt-warum { --vt: #c26a35; --vt-text: #8f4a20; grid-column: 1 / -1; padding-block-end: 20px; }
+:root[data-theme="dunkel"] .vt-ja    { --vt: #4a8a63; --vt-text: #6fbf87; }
+:root[data-theme="dunkel"] .vt-nein  { --vt: #b2645b; --vt-text: #e08a7e; }
+:root[data-theme="dunkel"] .vt-warum { --vt: #cd8352; --vt-text: #e0a06a; }
 .vergleich-kopf { display: flex; align-items: center; gap: 10px; }
-.vergleich-kopf h3 { color: var(--vt); font-size: 21px; margin: 0; }
+.vergleich-kopf h3 { color: var(--vt-text); font-size: 21px; margin: 0; }
 .vergleich-zeichen {
   width: 36px; height: 36px;
   border-radius: var(--radius-kl);
@@ -1092,10 +1135,14 @@ body:has(dialog[open]) { overflow: hidden; }
 .av-rot    { background: #b5544a; color: #fff; }
 .av-petrol { background: #205a7d; color: #fff; }
 .av-orange { background: #c26a35; color: #fff; }
-.stern-leer { color: var(--linie); }
+/* Leere Sterne sind ein Bedienelement (WCAG 1.4.11, 3:1). --linie kam auf 1,4:1. */
+.stern-leer { color: var(--stern-leer); }
 
 /* ---------- Bewertung abgeben (Tafel im Vergleichs-Stil, Bewertungs-Gelb) ---------- */
-.bewertung { --vt: var(--stern); margin-block-start: 20px; padding: 16px 20px 14px; }
+/* `--vt-text` muss hier mitgesetzt werden: das Bewertungs-Gelb als Überschrift
+   auf weißem Grund wäre 2,1:1. Im Dunkelmodus trägt das helle Gelb selbst. */
+.bewertung { --vt: var(--stern); --vt-text: #8a6200; margin-block-start: 20px; padding: 16px 20px 14px; }
+:root[data-theme="dunkel"] .bewertung { --vt-text: var(--stern); }
 .bewertung .vergleich-kopf h3 { font-size: 19px; }
 .bewertung .vergleich-zeichen { width: 32px; height: 32px; }
 .bewertung-formular { display: grid; gap: 10px; padding-block-start: 2px; }
@@ -1110,9 +1157,20 @@ body:has(dialog[open]) { overflow: hidden; }
   padding: 0 3px;
   font-size: 38px;
   line-height: 46px;                    /* gleiche Höhe wie die Eingabefelder daneben */
-  color: var(--linie);
+  color: var(--stern-leer);
   cursor: pointer;
 }
+/* Fehlertext der Sterne-Auswahl: sichtbar UND für Screenreader (role="alert").
+   Farbe allein darf die Information nicht tragen — deshalb Text mit Symbol. */
+.feld-fehler {
+  color: var(--fehler);
+  font-size: 16px;
+  font-weight: 600;
+  margin-block: 6px 0;
+}
+.feld-fehler::before { content: "\26A0\FE0E"; margin-inline-end: 6px; }
+.feld-fehler[hidden] { display: none; }
+
 .stern.gewaehlt { color: var(--stern); }
 .stern:hover { transform: scale(1.15); }
 .stern:focus-visible { outline: 3px solid var(--stern); outline-offset: 2px; border-radius: 6px; }
@@ -1130,7 +1188,7 @@ body:has(dialog[open]) { overflow: hidden; }
   align-items: start;                   /* geöffnete Frage zieht Nachbarn nicht mit */
 }
 .faq-frage {
-  background: var(--flaeche);
+  background: var(--tafel);
   border: 1px solid var(--linie);
   border-inline-start: 4px solid var(--marke);
   border-radius: var(--radius-kl);
@@ -1191,22 +1249,47 @@ body:has(dialog[open]) { overflow: hidden; }
   grid-template-columns: 1fr;
   gap: 26px;
 }
+/* Der Bereichs-Name liegt als reine Schrift oben IM Bild (Hasans Vorgabe,
+   10.07.) — kein eigener Kasten mehr. Damit er auch auf hellen Fotos lesbar
+   bleibt, liegt darunter ein weicher Verlauf aus Schwarz nach Durchsichtig;
+   ein Rahmen wäre wieder ein Kasten. Die Deckkraft ist gerechnet: die hellste
+   Kachel (Nagelpflege) hat in der Kopfzone die Luminanz 0,98 — bei 86 %
+   bleiben 0,137, also 4,7:1 für weiße Schrift. Das reicht auch für die kleine
+   Zeile „16 Artikel". `pointer-events: none`, damit der Klick durchgeht. */
+.kachel-gruppe { position: relative; }
 .kachel-name {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 0;
+  z-index: 1;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-block-end: 10px;
+  padding: 13px 18px 30px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0.86) 0%,
+    rgba(0, 0, 0, 0.52) 58%,
+    rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
 }
 .kachel-name strong {
   font-family: var(--schrift-titel);
   font-size: clamp(19px, 2.2vw, 23px);
-  color: var(--titel);
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
 }
-.kachel-zahl { font-size: 15px; color: var(--text-leise); white-space: nowrap; }
+.kachel-zahl {
+  font-size: 13px;
+  /* Kleinere Schrift braucht mehr Kontrast — deshalb weniger durchsichtig. */
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
 .kachel {
   display: block;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;      /* quadratisch — neun Kacheln im 3×3-Raster */
   background: var(--flaeche);
   border: 1px solid var(--linie);
   border-radius: var(--radius);
@@ -1256,6 +1339,9 @@ body:has(dialog[open]) { overflow: hidden; }
 main img { cursor: zoom-in; }
 main a img, .leaflet-container img { cursor: pointer; }
 .bild-maske { width: min(1100px, 94vw); max-width: none; padding: 12px; }
+/* Das Logo ist quadratisch — in voller Maskenbreite wirkte es erschlagend. */
+.bild-maske.logo-maske { width: min(520px, 88vw); }
+.bild-maske.logo-maske img { max-height: 78vh; }
 .bild-maske img {
   display: block;
   width: 100%;
@@ -1266,33 +1352,512 @@ main a img, .leaflet-container img { cursor: pointer; }
   cursor: default;
 }
 
-/* Bild-Hintergrund (Kontakt): festes Foto hinter dem Inhalt, Schleier wie beim Video */
+/* ============================================================
+   Bild-Hintergrund: festes Foto hinter dem Inhalt, darüber ein
+   Schleier, der den Text lesbar hält.
+
+   Jeder Bereich hat ein Bild für hell und eines für dunkel, jeweils
+   in drei Stufen. Ausgewählt wird nach Fensterbreite (media) UND
+   Pixeldichte (image-set):
+
+     bis  899 px   klein 1600 px   |  bei doppelter Dichte: mittel
+     ab   900 px   mittel 2560 px  |  bei doppelter Dichte: gross 3840 px
+
+   Die doppelte Dichte ist wichtig: ein Retina-Bildschirm verlangt bei
+   2000 px Fensterbreite real 4000 Bildpunkte. Ohne die 3840er Stufe
+   würde das Bild hochgerechnet und wirkte unscharf.
+
+   `cover` füllt die Fläche, ohne das Bild zu verzerren; überstehende
+   Ränder werden beschnitten. Die Pfade stehen relativ zu style.css und
+   gelten damit unverändert auch in den sechs Sprachordnern.
+
+   Die erste background-image-Zeile ist der Rückfall für Browser ohne
+   image-set; sie wird von der zweiten überschrieben, sobald image-set
+   verstanden wird.
+   ============================================================ */
 .hintergrund-bild {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: center / cover no-repeat;
+  background: var(--grund) center / cover no-repeat;
+  background-image: var(--hg-hell-klein);
+  background-image: image-set(var(--hg-hell-klein) 1x, var(--hg-hell-mittel) 2x);
 }
+:root[data-theme="dunkel"] .hintergrund-bild {
+  background-image: var(--hg-dunkel-klein);
+  background-image: image-set(var(--hg-dunkel-klein) 1x, var(--hg-dunkel-mittel) 2x);
+}
+@media (min-width: 900px) {
+  .hintergrund-bild {
+    background-image: var(--hg-hell-mittel);
+    background-image: image-set(var(--hg-hell-mittel) 1x, var(--hg-hell-gross) 2x);
+  }
+  :root[data-theme="dunkel"] .hintergrund-bild {
+    background-image: var(--hg-dunkel-mittel);
+    background-image: image-set(var(--hg-dunkel-mittel) 1x, var(--hg-dunkel-gross) 2x);
+  }
+}
+
+.seite-start .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-start-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-start-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-start-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-start-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-start-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-start-dunkel-gross.webp?v=4");
+}
+.seite-leistungen .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-leistungen-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-leistungen-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-leistungen-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-leistungen-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-leistungen-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-leistungen-dunkel-gross.webp?v=4");
+}
+.seite-produkte .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-produkte-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-produkte-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-produkte-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-produkte-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-produkte-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-produkte-dunkel-gross.webp?v=4");
+}
+.seite-ueber-mich .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-ueber-mich-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-ueber-mich-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-ueber-mich-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-ueber-mich-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-ueber-mich-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-ueber-mich-dunkel-gross.webp?v=4");
+}
+.seite-kundenstimmen .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-kundenstimmen-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-kundenstimmen-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-kundenstimmen-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-kundenstimmen-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-kundenstimmen-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-kundenstimmen-dunkel-gross.webp?v=4");
+}
+.seite-kontakt .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-kontakt-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-kontakt-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-kontakt-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-kontakt-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-kontakt-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-kontakt-dunkel-gross.webp?v=4");
+}
+.seite-warenkorb .hintergrund-bild {
+  --hg-hell-klein:     url("bilder/hintergrund-warenkorb-hell-klein.webp?v=4");
+  --hg-hell-mittel:    url("bilder/hintergrund-warenkorb-hell-mittel.webp?v=4");
+  --hg-hell-gross:     url("bilder/hintergrund-warenkorb-hell-gross.webp?v=4");
+  --hg-dunkel-klein:   url("bilder/hintergrund-warenkorb-dunkel-klein.webp?v=4");
+  --hg-dunkel-mittel:  url("bilder/hintergrund-warenkorb-dunkel-mittel.webp?v=4");
+  --hg-dunkel-gross:   url("bilder/hintergrund-warenkorb-dunkel-gross.webp?v=4");
+}
+
+/* Schleier über dem Bild. Bewusst zurückgenommen (10.07., Hasans Vorgabe:
+   „die Bilder müssen gut sein"). Vorher hell 60 % / dunkel 74 %, dann 30/45 % — dabei
+   wirkten die Fotos milchig. Der Fließtext braucht dadurch an manchen
+   Stellen eine eigene Fläche; siehe TODO. */
 .hintergrund-bild::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(238, 236, 230, 0.6);
+  background: rgba(238, 236, 230, 0.15);
 }
-:root[data-theme="dunkel"] .hintergrund-bild::after { background: rgba(12, 16, 18, 0.82); }
+:root[data-theme="dunkel"] .hintergrund-bild::after { background: rgba(12, 16, 18, 0.35); }
 @supports (background: color-mix(in srgb, red 50%, transparent)) {
-  .hintergrund-bild::after { background: color-mix(in srgb, var(--grund) 60%, transparent); }
-  :root[data-theme="dunkel"] .hintergrund-bild::after { background: color-mix(in srgb, var(--grund) 82%, transparent); }
+  .hintergrund-bild::after { background: color-mix(in srgb, var(--grund) 15%, transparent); }
+  :root[data-theme="dunkel"] .hintergrund-bild::after { background: color-mix(in srgb, var(--grund) 35%, transparent); }
+}
+
+/* ============================================================
+   Textflächen und Tafeln über den Hintergrundbildern
+
+   Der Schleier über dem Bild ist dünn (15 %), damit die Fotos wirken.
+   Damit der Text lesbar bleibt (WCAG AA: 4,5:1), bekommen die Textblöcke
+   eine leicht deckende Fläche — so wie die Karten es schon haben.
+
+   Deckkraft 88 % ist gerechnet: über der dunkelstmöglichen Bildstelle
+   ergibt `--flaeche` #faf9f5 die Farbe RGB (220, 219, 216), also rund
+   15:1 gegen schwarzen Text.
+
+   ACHTUNG: Abschnitte, die schon eigene Karten tragen (Kontakt-Formular,
+   Abgrenzung auf „Leistungen", Produkt-Kacheln, „Über mich"), bekommen
+   KEINE Tafel — sonst steht Kasten in Kasten. Nur der Kopf trägt dort
+   eine Fläche. Hasans Vorgabe vom 10.07.
+   ============================================================ */
+body[class*="seite-"] .held-raster > div:first-child,
+body[class*="seite-"] .abschnitt-kopf,
+body[class*="seite-"] .seitenkopf > .rahmen,
+body[class*="seite-"] .vorstellung,
+body[class*="seite-"] .sortier-feld,
+body[class*="seite-"] .liste-info,
+body[class*="seite-"] #korb-leer,
+body[class*="seite-"] #kasse-leer {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: clamp(14px, 1.8vw, 22px) clamp(20px, 3vw, 32px);
+  backdrop-filter: blur(6px);
+}
+/* Der eigene Innenabstand ersetzt das `padding-inline: 18px` von .rahmen —
+   ohne diese Zeile klebten die Tafeln auf dem Handy am Bildschirmrand. */
+body[class*="seite-"] .seitenkopf > .rahmen,
+body[class*="seite-"] .abschnitt-tafel > .rahmen {
+  /* Genau so breit wie der Inhalt eines normalen .rahmen (dessen
+     padding-inline von 18px hier durch eigenes padding ersetzt wird).
+     So stehen Tafel und Inhalt darunter auf derselben Kante. */
+  max-width: min(calc(var(--breite) - 36px), 100% - 36px);
+}
+
+/* Das Kontakt-Formular steht bündig unter der Kopf-Tafel, nicht schmaler. */
+body.seite-kontakt .formular-mitte { max-width: none; }
+:root[data-theme="dunkel"] body[class*="seite-"] .held-raster > div:first-child,
+:root[data-theme="dunkel"] body[class*="seite-"] .abschnitt-kopf,
+:root[data-theme="dunkel"] body[class*="seite-"] .seitenkopf > .rahmen,
+:root[data-theme="dunkel"] body[class*="seite-"] .vorstellung,
+:root[data-theme="dunkel"] body[class*="seite-"] .sortier-feld,
+:root[data-theme="dunkel"] body[class*="seite-"] .liste-info,
+:root[data-theme="dunkel"] body[class*="seite-"] #korb-leer,
+:root[data-theme="dunkel"] body[class*="seite-"] #kasse-leer {
+  background: rgba(0, 0, 0, 0.92);
+}
+@supports (background: color-mix(in srgb, red 50%, transparent)) {
+  body[class*="seite-"] .held-raster > div:first-child,
+  body[class*="seite-"] .abschnitt-kopf,
+  body[class*="seite-"] .seitenkopf > .rahmen,
+  body[class*="seite-"] .vorstellung,
+  body[class*="seite-"] .sortier-feld,
+  body[class*="seite-"] .liste-info,
+  body[class*="seite-"] #korb-leer,
+  body[class*="seite-"] #kasse-leer {
+    background: color-mix(in srgb, var(--tafel) 92%, transparent);
+  }
+}
+
+/* Schmale Zeilen brauchen Luft, aber kein Karten-Polster. */
+body[class*="seite-"] .sortier-feld,
+body[class*="seite-"] .liste-info {
+  padding: 8px 14px;
+  border-radius: var(--radius-kl);
+}
+/* Leer-Hinweise bleiben schmal und mittig. */
+body[class*="seite-"] #korb-leer,
+body[class*="seite-"] #kasse-leer {
+  max-width: 560px;
+  margin-inline: auto;
+}
+/* Kopf-Kästen laufen über die volle Rasterbreite — bündig mit dem
+   Inhalt darunter, aber als eigener Kasten (nicht verbunden).
+   Nur die Textzeilen darin bleiben lesbar schmal. */
+body[class*="seite-"] .abschnitt-kopf { max-width: none; }
+body[class*="seite-"] .abschnitt-kopf > *,
+body[class*="seite-"] .seitenkopf > .rahmen > * {
+  max-width: 640px;
+  margin-inline: auto;
+}
+/* Überzeile und Überschrift dürfen die volle Tafelbreite nutzen — sonst
+   bricht ein Titel wie „Unterwegs in Stuttgart und Umgebung" unnötig um.
+   `text-wrap: balance` verteilt ihn auf schmalen Fenstern gleichmäßig. */
+body[class*="seite-"] .abschnitt-kopf > .ueberzeile,
+body[class*="seite-"] .abschnitt-kopf > h1,
+body[class*="seite-"] .abschnitt-kopf > h2,
+body[class*="seite-"] .seitenkopf > .rahmen > .ueberzeile,
+body[class*="seite-"] .seitenkopf > .rahmen > h1 {
+  max-width: none;
+  text-wrap: balance;
+}
+/* Der Vorspann bleibt lesbar schmal und damit bei zwei Zeilen. */
+body[class*="seite-"] .abschnitt-kopf > p,
+body[class*="seite-"] .seitenkopf > .rahmen > p { max-width: 760px; }
+/* Das letzte Element im Kasten trägt keinen Abstand nach unten —
+   sonst wirkt die Tafel unten leer. */
+body[class*="seite-"] .abschnitt-kopf > *:last-child,
+body[class*="seite-"] .seitenkopf > .rahmen > *:last-child {
+  margin-block-end: 0;
+}
+/* Kontakt-Knöpfe und Orte-Liste sitzen mit in der jeweiligen Kopf-Tafel
+   (Hasans Vorgabe) — sie dürfen nicht auf die Textbreite von 640 px
+   gezwängt werden. */
+body[class*="seite-"] .seitenkopf > .rahmen > .kontakt-wege,
+body[class*="seite-"] .abschnitt-kopf > .orte-liste {
+  max-width: none;
+  margin-block-start: clamp(18px, 2.4vw, 26px);
+}
+/* Die Orts-Chips liegen jetzt auf der Tafel und brauchen einen
+   abgesetzten Ton, sonst verschwinden sie auf Weiß bzw. Schwarz. */
+body[class*="seite-"] .abschnitt-kopf > .orte-liste li {
+  background: var(--karte-auf-tafel);
+}
+
+/* Schrift-Hierarchie im Kopf (Hasans Feinschliff 10.07.):
+   Überzeile größer und dichter am oberen Rand, danach spürbarer Abstand;
+   Titel eine Spur kleiner; Vorspann kleiner und breiter verteilt, damit
+   er in zwei ausgewogenen Zeilen steht. */
+body[class*="seite-"] .seitenkopf > .rahmen { padding-block-start: clamp(10px, 1.3vw, 16px); }
+/* Größen fallen von oben nach unten (Hasans Ordnung):
+   Überzeile ist die Schau-Überschrift und damit die größte Schrift,
+   der Titel darunter tritt zurück, der Vorspann ist am kleinsten.
+
+   Semantisch bleibt das h1/h2 die Überschrift der Seite — für
+   Suchmaschinen und Screenreader zählt die Auszeichnung, nicht die
+   Schriftgröße. Nur die Optik dreht sich um. */
+body[class*="seite-"] .seitenkopf .ueberzeile,
+body[class*="seite-"] .abschnitt-kopf .ueberzeile {
+  font-size: clamp(16px, 1.9vw, 22px);
+  letter-spacing: 0.14em;
+  line-height: 1.25;
+  margin-block-end: 12px;
+}
+body[class*="seite-"] .seitenkopf h1,
+body[class*="seite-"] .abschnitt-kopf h2 {
+  font-size: clamp(17px, 2.2vw, 24px);
+  line-height: 1.25;
+}
+body[class*="seite-"] .seitenkopf > .rahmen > p,
+body[class*="seite-"] .abschnitt-kopf > p {
+  font-size: 16px;
+  line-height: 1.55;
+  margin-block-start: 10px;
+}
+
+/* ------------------------------------------------------------
+   Tafel: Kopf UND Inhalt eines Abschnitts auf EINER Fläche, über
+   die volle Rasterbreite. Nur für Abschnitte OHNE eigene Karten —
+   aktuell die Bilder-Galerie „Bilder aus meiner Arbeit".
+   Grund tief schwarz (dunkel) bzw. reinweiß (hell), `--tafel`.
+   ------------------------------------------------------------ */
+body[class*="seite-"] .abschnitt-tafel > .rahmen {
+  background: var(--tafel);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: clamp(22px, 3vw, 36px);
+  backdrop-filter: blur(6px);
+}
+@supports (background: color-mix(in srgb, red 50%, transparent)) {
+  body[class*="seite-"] .abschnitt-tafel > .rahmen {
+    background: color-mix(in srgb, var(--tafel) 92%, transparent);
+  }
+}
+/* Der Kopf sitzt schon auf der Tafel — kein zweiter Kasten. */
+body[class*="seite-"] .abschnitt-tafel .abschnitt-kopf {
+  background: none;
+  border: 0;
+  padding: 0;
+  backdrop-filter: none;
+}
+
+/* Karten, die IN einer Tafel liegen, brauchen einen abgesetzten Ton —
+   sonst verschwinden sie auf dem reinweißen bzw. tiefschwarzen Grund.
+   Betrifft die Kontakt-Kacheln in der Kopf-Tafel und alles, was künftig
+   in `.abschnitt-tafel` landet. */
+body[class*="seite-"] .seitenkopf > .rahmen .kontakt-kachel,
+body[class*="seite-"] .abschnitt-tafel .karte,
+body[class*="seite-"] .abschnitt-tafel .vertrauen-punkt,
+body[class*="seite-"] .abschnitt-tafel .schritt,
+body[class*="seite-"] .abschnitt-tafel .stimme,
+body[class*="seite-"] .abschnitt-tafel .preis-tabelle {
+  background: var(--karte-auf-tafel);
+}
+/* Die Preistabelle hat eigene Zeilenflächen — auch die absetzen. */
+body[class*="seite-"] .abschnitt-tafel .preis-tabelle tbody tr {
+  background: var(--karte-auf-tafel);
+}
+
+/* Kontakt-Formular: eigene Tafel (schwarz/weiß) wie der Kopf darüber.
+   Die Eingabefelder darin sind gedämpft weiß — nicht reinweiß, das
+   flimmert auf schwarzem Grund — mit dunkler Schrift.
+   ACHTUNG: Das Kontakt-Formular ist `<form class="kasse-formular"
+   id="kontakt-formular">` — es TEILT die Klasse mit der Kasse. Darum wird
+   hier über die ID gezielt, sonst färbt man die Kasse mit um.
+   (Die CSS-Klasse `.formular` weiter unten ist tot: kein HTML nutzt sie.) */
+body.seite-kontakt #kontakt-formular {
+  background: var(--tafel);
+  padding: clamp(20px, 2.6vw, 30px);
+}
+@supports (background: color-mix(in srgb, red 50%, transparent)) {
+  body.seite-kontakt #kontakt-formular {
+    background: color-mix(in srgb, var(--tafel) 92%, transparent);
+  }
+}
+/* Helles Thema: Tafel weiß, Felder grau abgesetzt.
+   Dunkles Thema: Tafel schwarz, Felder weiß (gedämpft, nicht reinweiß —
+   reines Weiß flimmert auf Schwarz). Schrift in beiden Fällen dunkel. */
+body.seite-kontakt #kontakt-formular .feld input,
+body.seite-kontakt #kontakt-formular .feld textarea,
+body.seite-kontakt #kontakt-formular .feld select {
+  background: #e3e1da;
+  color: #14181c;
+  border-color: #b3b0a7;
+}
+:root[data-theme="dunkel"] body.seite-kontakt #kontakt-formular .feld input,
+:root[data-theme="dunkel"] body.seite-kontakt #kontakt-formular .feld textarea,
+:root[data-theme="dunkel"] body.seite-kontakt #kontakt-formular .feld select {
+  background: #eeebe4;
+  color: #14181c;
+  border-color: #8f8c84;
+}
+body.seite-kontakt #kontakt-formular .feld input::placeholder,
+body.seite-kontakt #kontakt-formular .feld textarea::placeholder {
+  color: #5b5f63;
+}
+/* Der Fokus-Rahmen muss auf beiden Feldfarben sichtbar bleiben. */
+body.seite-kontakt #kontakt-formular .feld input:focus,
+body.seite-kontakt #kontakt-formular .feld textarea:focus,
+body.seite-kontakt #kontakt-formular .feld select:focus {
+  border-color: var(--marke);
+}
+/* Beschriftungen und Überschrift bleiben auf der Tafel lesbar. */
+body.seite-kontakt #kontakt-formular .feld label { color: var(--text); }
+
+/* Karten-Tafel (Adresse + Zwei-Klick-Karte): gleiche Tafel-Optik wie der
+   Kopf. Der Adressblock setzt sich mit `--karte-auf-tafel` ab.
+
+   `isolation: isolate` ist kein Schmuck: Leaflet vergibt seinen Ebenen und
+   Bedienelementen z-index-Werte bis 1000. Ohne eigenen Stapel-Kontext
+   liefen die Kartenkacheln beim Scrollen ÜBER die fixe Fußleiste (z-index 40).
+   Mit `isolate` bleiben Leaflets Werte innerhalb der Tafel. */
+body[class*="seite-"] .karten-tafel {
+  background: var(--tafel);
+  isolation: isolate;
+}
+@supports (background: color-mix(in srgb, red 50%, transparent)) {
+  body[class*="seite-"] .karten-tafel {
+    background: color-mix(in srgb, var(--tafel) 92%, transparent);
+  }
+}
+/* Der Adressblock bleibt transparent — er soll den Tafel-Grund zeigen
+   (schwarz im dunklen, weiß im hellen Thema), nicht sich davon absetzen. */
+body[class*="seite-"] .karten-tafel .karten-info {
+  background: transparent;
+}
+
+/* Wo die Rubrik-Zeile selbst die Überschrift IST, dürfen die h1/h2-Grund-
+   regeln ihre Schriftart und Farbe nicht überschreiben. Die Semantik bleibt
+   (h1 auf Seitenköpfen, h2 in Abschnitten), nur die Optik ist die Rubrik. */
+h1.ueberzeile,
+h2.ueberzeile {
+  font-family: var(--schrift-text);
+  font-weight: 700;
+  color: var(--sand);
+}
+/* Sie steht dann allein im Kasten — kein Abstand nach unten, und der Kasten
+   selbst wird auf etwa die halbe Höhe eines zweizeiligen Kopfes gebracht.
+   Die Zeile steht linksbündig und rückt nach oben: der Kasten ist flach,
+   die Schrift sitzt oben statt mittig (Hasans Vorgabe, 10.07.). */
+body[class*="seite-"] .abschnitt-kopf > h2.ueberzeile:last-child,
+body[class*="seite-"] .seitenkopf > .rahmen > h1.ueberzeile:last-child {
+  margin-block-end: 0;
+}
+body[class*="seite-"] .abschnitt-kopf:has(> h2.ueberzeile:only-child) {
+  padding-block: 8px 9px;
+  text-align: start;
+  max-width: none;
+  margin-block-end: 14px;
+}
+/* Trägt die Rubrik einen Titel daneben, darf der Kasten etwas höher sein. */
+body[class*="seite-"] .abschnitt-kopf:has(> h2.ueberzeile:only-child > .kopf-titel),
+body[class*="seite-"] .seitenkopf > .rahmen:has(> h1.ueberzeile:only-child > .kopf-titel),
+body[class*="seite-"] .seitenkopf > .rahmen:has(> h1.ueberzeile:only-child > .kopf-zusatz) {
+  padding-block: 11px 13px;
+}
+/* Steht unter der Rubrik noch Inhalt (Einzugsgebiet: die Orte-Kacheln),
+   bleibt der Kopf links und flach, behält aber Luft nach unten. */
+body[class*="seite-"] .abschnitt-kopf:has(> h2.ueberzeile:first-child) {
+  text-align: start;
+  max-width: none;
+  padding-block: 11px 13px;
+}
+/* Auch die Tafel darüber rückt näher heran, wenn ihr Kopf nur die Rubrik trägt. */
+body[class*="seite-"] .abschnitt-tafel > .rahmen:has(> .abschnitt-kopf > h2.ueberzeile:only-child) {
+  padding-block-start: 12px;
+}
+
+/* Dasselbe für Seitenköpfe, deren Rubrik die Seiten-Überschrift ist.
+   Steht darunter noch etwas (Kontakt: die vier Knöpfe), bleibt der Kopf
+   etwas höher und behält den Abstand nach unten. */
+body[class*="seite-"] .seitenkopf > .rahmen:has(> h1.ueberzeile) {
+  text-align: start;
+  padding-block: 12px 16px;
+}
+body[class*="seite-"] .seitenkopf > .rahmen:has(> h1.ueberzeile:only-child) {
+  padding-block: 8px 9px;
+}
+body[class*="seite-"] .seitenkopf > .rahmen > h1.ueberzeile { margin-block-start: 0; }
+
+/* Zweite Zeile steht NEBEN der Rubrik, nicht darunter: eine Zeile, links
+   bündig, Hierarchie fällt (Rubrik groß, Titel kleiner). Wird es zu eng,
+   rutscht der Titel in die nächste Zeile statt zu überlaufen. */
+body[class*="seite-"] .seitenkopf > .rahmen > h1.ueberzeile:has(> .kopf-titel),
+body[class*="seite-"] .seitenkopf > .rahmen > h1.ueberzeile:has(> .kopf-zusatz),
+body[class*="seite-"] .abschnitt-kopf > h2.ueberzeile:has(> .kopf-titel) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+}
+.kopf-titel {
+  font-family: var(--schrift-titel);
+  font-size: clamp(15px, 1.6vw, 20px);
+  font-weight: 700;
+  color: var(--titel);
+  text-transform: none;      /* die Rubrik ist versal, der Titel nicht */
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+/* Ein Vorspann neben der Rubrik (Warenkorb, Kasse) ist kein Titel: leiser,
+   damit die Hierarchie von oben nach unten weiter fällt. */
+.kopf-zusatz {
+  font-family: var(--schrift-text);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-leise);
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+body[class*="seite-"] .abschnitt-kopf:has(> h2.ueberzeile:only-child) > h2.ueberzeile {
+  text-align: start;
+  margin-block-start: 0;
+}
+
+/* Das Stimmen-Band liegt jetzt auf einer Tafel: die Karten setzen sich ab,
+   die Roll-Pfeile bleiben über den Karten sichtbar. */
+body[class*="seite-"] .abschnitt-tafel .stimme {
+  background: var(--karte-auf-tafel);
+}
+
+/* „Über mich": Kopf, Porträt und Text liegen auf EINER Tafel. Die beiden
+   Spalten dürfen darin keine eigenen Kästen mehr tragen — sonst Kasten in
+   Kasten. Das Porträt steht rechts, der Text links (Hasans Vorgabe);
+   auf schmalen Schirmen bleibt das Bild oben, wo es hingehört. */
+body[class*="seite-"] .abschnitt-tafel .vorstellung,
+body[class*="seite-"] .abschnitt-tafel .held-raster > div:first-child {
+  background: none;
+  border: 0;
+  padding: 0;
+  backdrop-filter: none;
+}
+@media (min-width: 840px) {
+  .abschnitt-tafel .person-raster .held-bild { order: 2; }
+  .abschnitt-tafel .person-raster .vorstellung { order: 1; }
+  /* Spaltenbreiten mitdrehen: der Text bekommt die breitere Spalte. */
+  .abschnitt-tafel .person-raster { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
 }
 
 /* Bereichs-Seite (produkt-bereich.html) */
 .seitenkopf-bereich h1 { margin-inline: 0; }
+.sprache summary:focus-visible { outline: 3px solid var(--sand); outline-offset: 2px; }
+
 .zurueck-knopf {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-weight: 600;
-  color: var(--marke);
+  /* --marke kam im Dunkelmodus auf 3,2:1; --akzent trägt in beiden Themen. */
+  color: var(--akzent);
+  min-height: 24px;
   margin-block-end: 10px;
 }
 
@@ -1359,8 +1924,11 @@ main a img, .leaflet-container img { cursor: pointer; }
 .p-info { font-size: 15.5px; color: var(--text-leise); margin-block: 6px 4px; }
 .p-meta { font-size: 13.5px; color: var(--text-leise); margin: 0; }
 .p-lager { font-size: 13.5px; font-weight: 600; margin-block: 6px 0; }
-.p-lager.auf-lager { color: #3e8e5a; }
-.p-lager.wenig { color: #c26a35; }
+/* Status-Text ist nur 13,5 px: er braucht die vollen 4,5:1 (war 3,8 / 4,0). */
+.p-lager.auf-lager { color: #2e6e45; }
+.p-lager.wenig { color: #8f4a20; }
+:root[data-theme="dunkel"] .p-lager.auf-lager { color: #6fbf87; }
+:root[data-theme="dunkel"] .p-lager.wenig { color: #e0a06a; }
 .p-fuss {
   margin-block-start: auto;
   padding-block-start: 12px;
@@ -1388,7 +1956,8 @@ main a img, .leaflet-container img { cursor: pointer; }
   overflow: hidden;
 }
 .menge button {
-  width: 34px; height: 34px;
+  /* 44 px ist die Klickflächen-Regel des Projekts (Zielgruppe 45+). */
+  width: 44px; height: 44px;
   border: none;
   background: none;
   color: var(--titel);
@@ -1456,7 +2025,8 @@ main a img, .leaflet-container img { cursor: pointer; }
 @media (max-width: 480px) {
   .kopf-innen { gap: 4px; }
   .kopf-rechts { gap: 2px; }
-  .marke-zeichen img { width: 34px; height: 34px; }
+  .marke-zeichen { width: 36px; height: 36px; }
+  .marke-zeichen img { width: 36px; height: 36px; }
   .kopf-schnell { gap: 7px; margin-inline-start: 2px; }
   .kopf-schnell a { padding-inline: 1px; }
   .kopf-schnell a { font-size: 13px; }
@@ -1501,7 +2071,12 @@ main a img, .leaflet-container img { cursor: pointer; }
 .summen-mwst { font-size: 13.5px; padding-block-start: 0; }
 
 /* Warenkorb-Seite: Inhalt als stabile Tafel */
-.korb-rahmen { max-width: 900px; }
+/* Exakt so breit wie die Kopf-Tafel darüber — dieselbe Formel, und das
+   `padding-inline` von .rahmen entfällt, damit die Kanten fluchten. */
+.korb-rahmen {
+  max-width: min(calc(var(--breite) - 36px), 100% - 36px);
+  padding-inline: 0;
+}
 #korb-tabelle {
   background: var(--flaeche);
   border: 1px solid var(--linie);
@@ -1745,7 +2320,6 @@ main a img, .leaflet-container img { cursor: pointer; }
   text-align: center;
 }
 .karte-start-kasten p { font-size: 14.5px; color: var(--text-leise); margin-block-end: 12px; }
-.gebiet-quelle { font-size: 13px; color: var(--text-leise); margin-block-start: 6px; }
 /* Orte als Kennfarben-Knöpfe im Stil der Kontaktwege-Reihe */
 .orte-liste {
   --lk: var(--marke);
@@ -1788,20 +2362,26 @@ main a img, .leaflet-container img { cursor: pointer; }
 .aufruf .knopf-rand { border-color: #fff; color: #fff; background: transparent; }
 .aufruf .knopf-rand:hover { background: rgba(255, 255, 255, 0.14); }
 
-/* ---------- Fußleiste: schlank, metallisch-glasig ---------- */
+/* ---------- Fußleiste: schlank, metallisch schwarz ----------
+   Der Grund steht weiter oben bei `.kopf, .fuss`. */
 .fuss {
-  background: linear-gradient(100deg,
-    rgba(10, 12, 15, 0.94) 0%,
-    rgba(42, 46, 52, 0.88) 45%,
-    rgba(13, 16, 19, 0.94) 100%);
-  backdrop-filter: blur(8px);
   border-block-start: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: #c9ccd0;
-  padding-block: 16px;
-  font-size: 15px;
+  padding-block: 4px;
+  font-size: 14px;
+  line-height: 1.45;
 }
-.fuss a { color: #fff; text-decoration: none; }
+/* Die Leiste bleibt bewusst flach. Die Tastfläche darf über sie hinausragen:
+   24 px erfüllt das AA-Minimum (WCAG 2.5.8); 44 px ginge nur mit höherer Leiste. */
+.fuss a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-inline: 8px;
+}
 .fuss a:hover { color: #d9bd77; }
 /* Fußzeile auf ALLEN Breiten fixiert und immer sichtbar (Hasans Wunsch) */
 .fuss {
@@ -1809,16 +2389,16 @@ main a img, .leaflet-container img { cursor: pointer; }
   inset-inline: 0;
   bottom: 0;
   z-index: 40;
-  padding-block-end: calc(16px + env(safe-area-inset-bottom));
+  padding-block-end: calc(4px + env(safe-area-inset-bottom));
 }
 @media (max-width: 560px) {
-  .fuss { font-size: 13.5px; padding-block: 10px calc(10px + env(safe-area-inset-bottom)); }
+  .fuss { font-size: 13px; padding-block: 4px calc(4px + env(safe-area-inset-bottom)); }
   .fuss-innen { gap: 8px; }
 }
 .fuss-innen {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;   /* Impressum · Datenschutz stehen links bündig */
   align-items: center;
   gap: 10px;
 }
@@ -1826,7 +2406,6 @@ main a img, .leaflet-container img { cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-inline-start: auto;
 }
 
 /* Kundenstimmen auf schmalen Bildschirmen: kompakte Zeilen (Name +
@@ -1913,40 +2492,123 @@ main a img, .leaflet-container img { cursor: pointer; }
 
 /* ---------- Seitenkopf (Unterseiten) ---------- */
 .seitenkopf {
-  padding-block: clamp(24px, 3.5vw, 40px) clamp(14px, 2vw, 22px);
-  text-align: center;
+  padding-block: clamp(18px, 2.4vw, 28px) clamp(14px, 2vw, 22px);
+  text-align: start;          /* alle Köpfe linksbündig (Hasans Vorgabe, 10.07.) */
 }
 .seitenkopf h1 { font-size: clamp(27px, 5.5vw, 40px); }
 .seitenkopf p {
   color: var(--text-leise);
   font-size: 18px;
   max-width: 560px;
-  margin: 8px auto 0;
+  margin: 8px 0 0;
 }
 /* Bereichs-Seite: linksbündig mit Zurück-Knopf (muss NACH .seitenkopf stehen) */
 .seitenkopf.seitenkopf-bereich { text-align: start; }
 
 /* ---------- Rechtstexte ---------- */
 .rechtstext { max-width: 780px; margin-inline: auto; }
+/* Sehr schmale Geräte: lange E-Mail-Adressen und URLs dürfen umbrechen. */
+.rechtstext p, .rechtstext li, .rechtstext a { overflow-wrap: anywhere; }
 .rechtstext h2 { font-size: 24px; margin-block: 36px 12px; }
 .rechtstext h3 { font-size: 19px; margin-block: 24px 8px; }
+
+/* ============================================================
+   Impressum & Datenschutz als Maske (Fußzeilen-Links)
+   Fester Kopf, darunter ein rollender Körper — die Maske wird nie länger
+   als der Bildschirm. Der Titel bleibt beim Rollen stehen.
+   ============================================================ */
+.rechts-maske {
+  width: min(820px, calc(100vw - 32px));
+  max-height: min(80dvh, 760px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;            /* gerollt wird nur der Körper */
+  padding: 0;
+  background: var(--tafel);    /* Kopf und Körper aus einem Guss */
+}
+.rechts-kopf {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-block-end: 1px solid var(--linie);
+  background: var(--tafel);
+}
+.rechts-titel {
+  font-family: var(--schrift-titel);
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--titel);
+  margin: 0;
+}
+/* Der Schließer sitzt im Kopf, nicht über dem Text */
+.rechts-maske .maske-schliessen {
+  position: static;
+  flex: none;
+  width: 40px; height: 40px;
+  font-size: 22px;
+  line-height: 1;
+}
+.rechts-koerper {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 22px 26px;
+}
+/* Blocksatz mit Silbentrennung (Hasans Vorgabe); Adressblöcke mit <br>
+   bleiben davon unberührt, weil jede Zeile als Schlusszeile gilt. */
+.rechts-maske .rechtstext { max-width: none; }
+.rechts-maske .rechtstext p,
+.rechts-maske .rechtstext li {
+  text-align: justify;
+  hyphens: auto;
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+/* Gleichmäßige Stufen: Abschnitts-Titel deutlich kleiner als der Masken-Titel */
+.rechts-maske .rechtstext h2 {
+  font-size: 19px;
+  margin-block: 26px 8px;
+  padding-block-start: 20px;
+  border-block-start: 1px solid var(--linie);
+}
+.rechts-maske .rechtstext > :first-child { margin-block-start: 0; padding-block-start: 0; border: 0; }
+.rechts-maske .rechtstext h2:first-of-type { border: 0; padding-block-start: 0; margin-block-start: 18px; }
+.rechts-maske .rechtstext h3 { font-size: 17px; margin-block: 18px 6px; }
+.rechts-maske .rechtstext ul { margin-block: 8px 14px; padding-inline-start: 22px; }
+.rechts-maske .rechtstext li { margin-block-end: 6px; }
+.rechts-maske .abgrenzung { margin-block-end: 18px; }
+@media (max-width: 560px) {
+  .rechts-kopf { padding: 14px 16px; }
+  .rechts-koerper { padding: 14px 16px 20px; }
+  .rechts-maske .rechtstext p,
+  .rechts-maske .rechtstext li { text-align: start; }   /* schmale Spalte: Blocksatz reißt Lücken */
+}
 
 /* ============================================================
    Erweiterung ab 640px – zwei Spalten, wo es passt
    ============================================================ */
 @media (min-width: 640px) {
   .rahmen { padding-inline: 22px; }
+  /* Zwei gleich breite Hälften — `minmax(0, 1fr)`, sonst wächst die Spalte
+     mit dem längeren Text und die Knöpfe stehen ungleich (en/ru/tr). */
+  .held-knoepfe {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px;
+  }
   .held-knoepfe .knopf {
-    width: auto;
+    width: 100%;
     max-width: none;
     margin-inline: 0;
     min-height: 52px;
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 12px 18px;
+    font-size: clamp(14px, 1.15vw, 18px);
   }
   .karten-raster { grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .stimmen-raster { grid-auto-columns: calc((100% - 18px) / 2); gap: 18px; }
-  .kachel-raster { grid-template-columns: repeat(2, 1fr); gap: 24px 28px; }
+  .kachel-raster { grid-template-columns: repeat(2, 1fr); gap: 24px 26px; }
   .kontakt-wege { grid-template-columns: repeat(2, 1fr); }
   .produkt-raster { grid-template-columns: 1fr 1fr; }
   .p-korb { flex: 1; }
@@ -1975,30 +2637,49 @@ main a img, .leaflet-container img { cursor: pointer; }
    Erweiterung ab 840px – Held und Kontakt zweispaltig
    (Menü-Knopf und Aktionsleiste bleiben bis 1000px)
    ============================================================ */
+@media (min-width: 900px) {
+  /* Neun Bereiche im 3×3-Raster, quadratische Kacheln */
+  .kachel-raster { grid-template-columns: repeat(3, 1fr); gap: 22px 24px; }
+}
+
 @media (min-width: 840px) {
   .held-raster { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: stretch; }
-  .held-bild { order: 0; aspect-ratio: 4 / 5; max-width: none; }
+  /* Das Bild hatte ein festes 4:5 und war höher als der Text — darunter blieb
+     in der Tafel ein leeres Feld. Jetzt bestimmt der Text die Zeilenhöhe, das
+     Bild füllt sie (`object-fit: cover` schneidet zu, verzerrt nicht). */
+  /* Nur die Bilder IM Held-/Personen-Raster ziehen sich auf die Spaltenhöhe.
+     Die Galerie-Bilder tragen dieselbe Klasse, stehen aber im `.karten-raster`
+     und behalten ihr 4:3-Format — sonst sprengt `min-height` ihre Spalte. */
+  .held-raster > .held-bild { order: 0; aspect-ratio: auto; align-self: stretch; max-width: none; min-height: 420px; }
   /* Porträt (Über mich): füllt die volle Zeilenhöhe, egal wie lang der Text ist */
   .portraet { aspect-ratio: auto; align-self: stretch; }
   .person-raster { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
-  .held p.gross { font-size: 20px; }
+  .held p.gross { font-size: 19px; }
 
-  .held-firma { font-size: clamp(26px, 3.4vw, 39px); }
+  .held-firma { font-size: clamp(26px, 2.9vw, 34px); }
 
-  /* Text-Spalte über die volle Bildhöhe verteilen:
-     Überschrift oben, Sozial-Leiste unten, gleichmäßige Zwischenräume */
+  /* Text-Spalte füllt die ganze Tafelhöhe: Überschrift oben, Knopf-Block unten,
+     der freie Platz verteilt sich gleichmäßig auf die drei Zwischenräume
+     (`space-between`). `gap` ist dabei nur der Mindestabstand. */
   .held-raster > div:first-child {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-block: 14px;
+    gap: clamp(20px, 2.4vw, 32px);
   }
   .held-raster > div:first-child > * { margin-block: 0; }
+  /* Mehr Polster unten hebt den Knopf-Block von der Tafelkante ab. Der
+     Selektor braucht das `body[class*="seite-"]`-Präfix: sonst gewinnt die
+     Textflächen-Regel („Textflächen und Tafeln") mit ihrem `padding`-Kurzwert. */
+  body[class*="seite-"] .held-raster > div:first-child { padding-block-end: 42px; }
 
-  /* Eine Einheit: zwei Hälften; Knöpfe etwas schmaler, mittig über ihren Paaren */
-  .held-knoepfe { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .held-knoepfe .knopf { width: 100%; max-width: 280px; justify-self: center; }
-  .sozial-leiste { gap: 18px; }
+  /* Zwischen 840 und 1100 px ist die Textspalte zu schmal für zwei einzeilige
+     Knöpfe (die englische und russische Beschriftung sind deutlich länger als
+     die deutsche). Dort stehen sie untereinander, jeder über die volle Breite. */
+  .held-knoepfe { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .held-knoepfe .knopf { width: 100%; max-width: none; justify-self: stretch; gap: 8px; }
+  .held-knoepfe .knopf svg { flex: none; }
+  .sozial-knopf { width: 100%; }
   .sozial-knopf { height: 40px; }
   .sozial-knopf svg { width: 22px; height: 22px; }
   .kontakt-wege { grid-template-columns: repeat(4, 1fr); }
@@ -2011,6 +2692,15 @@ main a img, .leaflet-container img { cursor: pointer; }
   .faq { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
   .abschnitt-kopf { margin-block-end: 44px; }
   .abschnitt-kopf p, .seitenkopf p, .aufruf p { font-size: 19px; }
+}
+
+/* ============================================================
+   Ab 1100px: Held-Knöpfe nebeneinander, exakt gleich breit
+   (`minmax(0, 1fr)` — mit blossem `1fr` wächst die Spalte mit dem längeren
+   Text, dann sind die beiden Knöpfe unterschiedlich breit)
+   ============================================================ */
+@media (min-width: 1100px) {
+  .held-knoepfe { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
 }
 
 /* ============================================================

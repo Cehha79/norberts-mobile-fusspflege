@@ -22,7 +22,8 @@ window.NF_TEXTE = {
 };
 
 window.NF_KATEGORIEN = {
-  w: 'Narzędzia, instrumenty i higiena',
+  w: 'Narzędzia i instrumenty',
+  d: 'Higiena i dezynfekcja',
   c: 'Kremy i balsamy',
   e: 'Urządzenia elektryczne',
   b: 'Kąpiele stóp i dodatki',
@@ -42,6 +43,14 @@ window.NF_UEBERSETZUNG = {
   w7:  { name: 'Kopytko do skórek, dwustronne',                info: 'Odsuwa i unosi skórki – dwie końcówki robocze.',                                 inhalt: '1 szt.' },
   w9:  { name: 'Szczoteczka do czyszczenia instrumentów',      info: 'Delikatne mosiężne włosie – utrzymuje pilniki i frezy w czystości.',             inhalt: '1 szt.' },
   w10: { name: 'Zestaw startowy do pielęgnacji stóp',          info: '6 najważniejszych narzędzi w etui – idealny na początek.',                       inhalt: 'Zestaw 6-częściowy' },
+  w3:  { name: 'Skrobak do zrogowaceń z osłoną ostrza',        info: 'Osłonięte ostrze, pewne prowadzenie – tylko dla wprawnych rąk.',                 inhalt: '1 szt. + 5 ostrzy' },
+  w8:  { name: 'Pilnik szafirowy dwustronny',                  info: 'Strona gruba i drobna – skraca i wygładza za jednym pociągnięciem.',             inhalt: '1 szt. · 18 cm' },
+  w11: { name: 'Pilnik do zrogowaceń, stal nierdzewna',        info: 'Ergonomiczny uchwyt, wymienne wkłady pilnika.',                                  inhalt: '1 szt. + 10 wkładów' },
+  w12: { name: 'Obcinacz do paznokci z pojemnikiem',           info: 'Żaden ścinek nie odpryśnie – rozkładany pojemnik.',                              inhalt: '1 szt.' },
+  w13: { name: 'Cęgi do narożników, szpiczaste',               info: 'Smukła końcówka do narożników paznokcia – czysto i dokładnie.',                  inhalt: '1 szt. · 11 cm' },
+  w14: { name: 'Pumeks z uchwytem',                            info: 'Naturalny pumeks na drewnianym uchwycie – wygodnie sięga pięty.',                inhalt: '1 szt.' },
+  w15: { name: 'Pudełko na instrumenty',                       info: 'Wentylowane pudełko z wkładem – utrzymuje narzędzia suche.',                     inhalt: '1 szt. · 20 × 12 cm' },
+  w16: { name: 'Zestaw narzędzi, 10-częściowy',                info: 'Cęgi, pilniki, kopytka i nożyczki w etui rolowanym.',                            inhalt: 'Zestaw 10-częściowy' },
 
   /* --- Cremes & Balsame --- */
   c1:  { name: 'Krem do stóp Urea 10 %',                       info: 'Intensywne nawilżenie suchych, zmęczonych stóp.',                                inhalt: '100 ml' },
@@ -160,6 +169,14 @@ window.NF_UEBERSETZUNG = {
   d6:  { name: 'Koncentrat do dezynfekcji',                    info: 'Wystarcza na maksymalnie 25 l gotowego roztworu.',                               inhalt: '500 ml' },
   d7:  { name: 'Podkłady jednorazowe (50 szt.)',               info: 'Chłonne i higieniczne – 40 × 60 cm.',                                            inhalt: '50 szt.' },
   d9:  { name: 'Podróżny zestaw higieniczny',                  info: 'Żel, spray i chusteczki w kosmetyczce.',                                         inhalt: 'Zestaw 3-częściowy' },
+  d8:  { name: 'Ręczniki jednorazowe (100 szt.)',              info: 'Miękkie i chłonne – po kąpieli stóp, potem wyrzucić.',                           inhalt: '100 szt.' },
+  d10: { name: 'Chusteczki dezynfekujące (80 szt.)',           info: 'Gotowe do użycia w puszce – do urządzeń na bieżąco.',                            inhalt: '80 chusteczek' },
+  d11: { name: 'Krem ochronny do rąk',                         info: 'Po częstej dezynfekcji – szybko się wchłania.',                                  inhalt: '100 ml' },
+  d12: { name: 'Butelka z rozpylaczem, pusta 250 ml',          info: 'Do opisania, drobna mgiełka – na koncentrat.',                                   inhalt: '1 szt. · 250 ml' },
+  d13: { name: 'Maseczki na usta i nos (50 szt.)',             info: 'Trójwarstwowe, ze sztywnym noskiem – typ II.',                                   inhalt: '50 szt.' },
+  d14: { name: 'Tabletki do czyszczenia instrumentów',         info: 'Jedna tabletka na litr – usuwa osad przed dezynfekcją.',                         inhalt: '30 tabletek' },
+  d15: { name: 'Pilniki jednorazowe (50 szt.)',                info: 'Dla każdej klientki świeży pilnik – higienicznie i prosto.',                     inhalt: '50 szt.' },
+  d16: { name: 'Zestaw higieniczny do domu',                   info: 'Żel do rąk, spray do powierzchni i podkłady jednorazowe w zestawie.',            inhalt: 'Zestaw 3-częściowy' },
 
   /* --- Geschenke & Gutscheine --- */
   g1:  { name: 'Bon na profesjonalną pielęgnację stóp',        info: 'Klasyczny prezent – pełna pielęgnacja podczas wizyty domowej.',                  inhalt: '1 bon' },

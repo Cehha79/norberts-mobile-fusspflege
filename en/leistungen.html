@@ -15,37 +15,40 @@
 <link rel="alternate" hreflang="x-default" href="https://www.norberts-mobile-fusspflege.de/leistungen.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Norberts mobile Fußpflege">
-<meta property="og:title" content="Services &amp;amp; Prices – Norberts mobile Fußpflege Stuttgart">
+<meta property="og:title" content="Services &amp; Prices – Norberts mobile Fußpflege Stuttgart">
 <meta property="og:description" content="Services and prices for mobile cosmetic foot care in Stuttgart: professional foot care 48 €, foot massage 30 €, reflex-zone wellness massage 57 € – during a home visit.">
 <meta property="og:url" content="https://www.norberts-mobile-fusspflege.de/en/leistungen.html">
-<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg">
+<meta property="og:image" content="https://www.norberts-mobile-fusspflege.de/bilder/og-bild.jpg?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="../bilder/logo-klein.png">
-<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css?v=81">
-<script src="../js/thema.js"></script>
-<script src="../js/main.js?v=20" defer></script>
+<link rel="icon" type="image/png" href="../bilder/logo-klein.png?v=1">
+<link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="../style.css?v=151">
+<script src="../js/thema.js?v=2"></script>
+<script src="../js/main.js?v=28" defer></script>
 </head>
-<body>
+<body class="seite-leistungen">
+<!-- ================= Bild-Hintergrund (fest, je Thema hell/dunkel) ================= -->
+<div class="hintergrund-bild" aria-hidden="true"></div>
+
 
 <!-- ================= Kopfleiste ================= -->
 <header class="kopf">
   <div class="rahmen kopf-innen">
     <a class="marke" href="index.html" aria-label="Norberts mobile Fußpflege – to the homepage">
       <span class="marke-zeichen">
-        <img src="../bilder/logo-klein.png" alt="Logo: Norberts mobile Fußpflege">
+        <img src="../bilder/logo-frei.png?v=1" alt="Logo: Norberts mobile Fußpflege">
       </span>
     </a>
-    <nav class="kopf-schnell" aria-label="Schnell-Navigation">
+    <nav class="kopf-schnell" aria-label="Quick navigation">
     <a href="index.html">Home</a>
     <a href="leistungen.html" aria-current="page">Services</a>
     </nav>
     <nav class="hauptnav" id="hauptnav" aria-label="Main navigation">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" lang="en">Home</a></li>
         <li><a href="leistungen.html" aria-current="page">Services</a></li>
         <li><a href="produkte.html">Products</a></li>
         <li><a href="ueber-mich.html">About me</a></li>
@@ -54,7 +57,7 @@
       </ul>
     </nav>
     <div class="kopf-rechts">
-      <button class="nav-knopf" type="button" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">Menu</span></button>
+      <button class="nav-knopf" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hauptnav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="nav-wort">Menu</span></button>
       <a class="korb-knopf" href="warenkorb.html" aria-label="View shopping cart" title="Cart">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 4h2l2.4 12h10.2l2.4-9H6"/></svg>
         <span class="korb-zahl" hidden>0</span>
@@ -83,15 +86,12 @@
 <!-- ================= Seitenkopf ================= -->
 <section class="seitenkopf">
   <div class="rahmen">
-    <span class="ueberzeile">Services &amp; prices</span>
-    <h1>Foot care with clear prices</h1>
-    <p>All cosmetic foot care services at a glance – transparent, fair
-    and with a clear travel policy included.</p>
+    <h1 class="ueberzeile">Services &amp; prices<span class="kopf-titel">Foot care with clear prices</span></h1>
   </div>
 </section>
 
 <!-- ================= Leistungs-Karten ================= -->
-<section class="abschnitt" style="padding-top:16px;">
+<section class="abschnitt abschnitt-tafel" style="padding-top:16px;">
   <div class="rahmen">
     <div class="karten-raster">
       <article class="karte leistung lk-blau einblenden" data-maske="maske-fusspflege" role="button" tabindex="0" aria-haspopup="dialog">
@@ -236,12 +236,10 @@
 </section>
 
 <!-- ================= Preistabelle ================= -->
-<section class="abschnitt abschnitt-hell">
+<section class="abschnitt abschnitt-hell abschnitt-tafel">
   <div class="rahmen">
     <div class="abschnitt-kopf einblenden">
-      <span class="ueberzeile">Price list</span>
-      <h2>All prices at a glance</h2>
-      <p>Fair, fixed prices – you know exactly where you stand beforehand.</p>
+      <h2 class="ueberzeile">Price list</h2>
     </div>
     <div class="tabelle-rolle einblenden">
     <table class="preis-tabelle">
@@ -279,10 +277,7 @@
 <section class="abschnitt" id="abgrenzung">
   <div class="rahmen">
     <div class="abschnitt-kopf einblenden">
-      <span class="ueberzeile">Important to know</span>
-      <h2>Cosmetic foot care – what does that mean?</h2>
-      <p>I care for healthy feet. So that you know exactly where you stand,
-      here is the clear distinction from medical foot care (podiatry).</p>
+      <h2 class="ueberzeile">Important to know<span class="kopf-titel">Cosmetic foot care – what does that mean?</span></h2>
     </div>
     <div class="vergleich einblenden">
       <div class="vergleich-tafel vt-ja">
@@ -350,11 +345,14 @@
 <!-- ================= Fußleiste ================= -->
 <footer class="fuss">
   <div class="rahmen fuss-innen">
-    <span>© <span data-jahr>2026</span> Norberts mobile Fußpflege</span>
     <span class="fuss-links"><a href="../impressum.html">Legal notice</a> · <a href="../datenschutz.html">Privacy policy</a></span>
   </div>
 </footer>
 
 <!-- ================= Mobile Aktionsleiste ================= -->
+<!-- Reichweitenmessung: GoatCounter, lokal ausgeliefert, ohne Cookies
+     und ohne Zugriff auf den Endgeräte-Speicher (siehe DOKU). -->
+<script data-goatcounter="https://norbert.goatcounter.com/count"
+        src="../js/extern/goatcounter.js?v=1" defer></script>
 </body>
 </html>

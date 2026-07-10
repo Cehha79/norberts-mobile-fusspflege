@@ -21,7 +21,8 @@ window.NF_TEXTE = {
 };
 
 window.NF_KATEGORIEN = {
-  w: 'Tools, Instruments & Hygiene',
+  w: 'Tools & Instruments',
+  d: 'Hygiene & Disinfection',
   c: 'Creams & Balms',
   e: 'Electric Devices',
   b: 'Foot Baths & Additives',
@@ -41,6 +42,14 @@ window.NF_UEBERSETZUNG = {
   w7:  { name: 'Double-Ended Cuticle Pusher',         info: 'Pushes back and loosens the cuticle – two working ends.',                       inhalt: '1 piece' },
   w9:  { name: 'Instrument Cleaning Brush',           info: 'Fine brass bristles – keeps files and burs clean.',                             inhalt: '1 piece' },
   w10: { name: 'Foot Care Starter Set',               info: 'The 6 most important tools in a case – the ideal way to start.',                inhalt: 'Set of 6' },
+  w3:  { name: 'Callus Plane with Blade Guard',       info: 'Shielded blade, steady guidance – for experienced hands only.',                 inhalt: '1 piece + 5 blades' },
+  w8:  { name: 'Double-Sided Sapphire File',          info: 'Coarse and fine side – shortens and smooths in one pass.',                      inhalt: '1 piece · 18 cm' },
+  w11: { name: 'Stainless Steel Callus File',         info: 'Ergonomic handle, replaceable filing blade.',                                   inhalt: '1 piece + 10 blades' },
+  w12: { name: 'Nail Clippers with Catcher',          info: 'No nail clipping flies off – fold-out compartment.',                            inhalt: '1 piece' },
+  w13: { name: 'Pointed Corner Nippers',              info: 'A slim tip for the nail corners – clean and precise.',                          inhalt: '1 piece · 11 cm' },
+  w14: { name: 'Pumice Stone with Handle',            info: 'Natural pumice on a wooden handle – reaches the heel with ease.',               inhalt: '1 piece' },
+  w15: { name: 'Instrument Storage Box',              info: 'Ventilated box with an insert – keeps the tools dry.',                          inhalt: '1 piece · 20 × 12 cm' },
+  w16: { name: 'Tool Set, 10 Pieces',                 info: 'Nippers, files, pushers and scissors in a roll-up case.',                       inhalt: 'Set of 10' },
 
   /* --- Creams & balms --- */
   c1:  { name: 'Foot Cream Urea 10 %',                info: 'Intensive moisture for dry, stressed feet.',                                    inhalt: '100 ml' },
@@ -159,6 +168,14 @@ window.NF_UEBERSETZUNG = {
   d6:  { name: 'Disinfectant Concentrate',            info: 'Makes up to 25 l of ready-to-use solution.',                                    inhalt: '500 ml' },
   d7:  { name: 'Disposable Underlays (50 pack)',      info: 'Highly absorbent and hygienic – 40 × 60 cm.',                                   inhalt: '50 pieces' },
   d9:  { name: 'Hygiene Travel Set',                  info: 'Gel, spray and wipes in a toiletry bag.',                                       inhalt: 'Set of 3' },
+  d8:  { name: 'Disposable Towels (100 pack)',        info: 'Soft and absorbent – after the foot bath, then discard.',                       inhalt: '100 pieces' },
+  d10: { name: 'Disinfectant Wipes (80 pack)',        info: 'Ready to use in the tub – for devices in between.',                             inhalt: '80 wipes' },
+  d11: { name: 'Hand Barrier Cream',                  info: 'After frequent disinfecting – absorbs quickly.',                                inhalt: '100 ml' },
+  d12: { name: 'Empty Spray Bottle, 250 ml',          info: 'Labellable, fine mist – for the concentrate.',                                  inhalt: '1 piece · 250 ml' },
+  d13: { name: 'Face Masks (50 pack)',                info: 'Three-layer, with a nose clip – type II.',                                      inhalt: '50 pieces' },
+  d14: { name: 'Instrument Cleaning Tabs',            info: 'One tab per litre – dissolves residue before disinfecting.',                    inhalt: '30 tabs' },
+  d15: { name: 'Disposable Files (50 pack)',          info: 'A fresh file for every client – hygienic and simple.',                          inhalt: '50 pieces' },
+  d16: { name: 'Home Hygiene Set',                    info: 'Hand gel, surface spray and disposable underlays in a set.',                    inhalt: 'Set of 3' },
 
   /* --- Gifts & vouchers --- */
   g1:  { name: 'Professional Foot Care Voucher',      info: 'The classic gift – the complete care session as a home visit.',                 inhalt: '1 voucher' },

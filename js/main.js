@@ -54,27 +54,8 @@
       });
     }
 
-    /* ---------- Video-Hintergrund (Produkte): Quelle je Thema ---------- */
-    var videoGrund = document.querySelector('.hintergrund-video video');
-    if (videoGrund) {
-      var setzeGrundVideo = function () {
-        var art = istDunkel() ? 'dunkel' : 'hell';
-        videoGrund.poster = 'bilder/hintergrund-' + art + '.jpg?v=4';
-        if (ruhig) return;                    /* reduzierte Bewegung: nur Standbild */
-        var quelle = 'bilder/hintergrund-' + art + '.mp4?v=4';
-        if (videoGrund.getAttribute('src') !== quelle) {
-          videoGrund.setAttribute('src', quelle);
-          var p = videoGrund.play();
-          if (p && p.catch) p.catch(function () {});
-        }
-      };
-      setzeGrundVideo();
-      /* Thema-Umschalter ändert data-theme am <html> — darauf reagieren */
-      if ('MutationObserver' in window) {
-        new MutationObserver(setzeGrundVideo)
-          .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-      }
-    }
+    /* Die Seiten-Hintergründe laufen seit 10.07. rein über CSS
+       (.hintergrund-bild, Bild je Thema und Fenstergröße) — kein JS nötig. */
 
     /* ---------- Mobile Navigation ---------- */
     var navKnopf = document.querySelector('.nav-knopf');
@@ -157,19 +138,29 @@
       sterneKnoepfe.forEach(function (knopf) {
         knopf.addEventListener('click', function () {
           sterneWert.value = knopf.getAttribute('data-wert');
-          sterneWahl.classList.remove('fehlt');
+          sterneOk(true);
           sterneKnoepfe.forEach(function (k) {
             k.classList.toggle('gewaehlt',
               parseInt(k.getAttribute('data-wert'), 10) <= parseInt(sterneWert.value, 10));
           });
         });
       });
+      /* Der rote Schatten allein genügt nicht: Farbe ist kein Informationsträger,
+         und ein Screenreader bekommt ihn gar nicht mit. Darum ein Text mit
+         role="alert", der beim Einblenden vorgelesen wird. */
+      var sterneFehler = document.getElementById('sterne-fehler');
+      var sterneOk = function (ok) {
+        sterneWahl.classList.toggle('fehlt', !ok);
+        sterneWahl.setAttribute('aria-invalid', ok ? 'false' : 'true');
+        if (sterneFehler) sterneFehler.hidden = ok;
+      };
       var eingabenOk = function () {
         if (!sterneWert.value) {
-          sterneWahl.classList.add('fehlt');
+          sterneOk(false);
           sterneKnoepfe[0].focus();
           return false;
         }
+        sterneOk(true);
         return bewertung.reportValidity();
       };
       var bewertungsText = function () {
@@ -184,7 +175,7 @@
       };
       document.getElementById('b-whatsapp').addEventListener('click', function () {
         if (!eingabenOk()) return;
-        window.nfWhatsApp('491735904496', bewertungsText());
+        window.nfWhatsApp('4917686961032', bewertungsText());
       });
       document.getElementById('b-mail').addEventListener('click', function () {
         if (!eingabenOk()) return;
@@ -236,7 +227,7 @@
       };
       document.getElementById('f-whatsapp').addEventListener('click', function () {
         if (!kontakt.reportValidity()) return;
-        window.nfWhatsApp('491735904496', kText());
+        window.nfWhatsApp('4917686961032', kText());
       });
       document.getElementById('f-mail').addEventListener('click', function () {
         if (!kontakt.reportValidity()) return;
@@ -263,11 +254,12 @@
         });
         var strassen = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
-          attribution: '© OpenStreetMap-Mitwirkende'
+          /* Lizenzhinweis gehört in die Karte (ODbL verlangt Namensnennung). */
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende (ODbL)'
         });
         var satellit = L.tileLayer('https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg', {
           maxNativeZoom: 14, maxZoom: 18,
-          attribution: 'Sentinel-2 cloudless © EOX (CC BY 4.0)'
+          attribution: 'Sentinel-2 cloudless &copy; <a href="https://s2maps.eu" target="_blank" rel="noopener">EOX IT Services GmbH</a> (CC BY 4.0)'
         });
         strassen.addTo(karte);
         L.control.layers({ 'Karte': strassen, 'Satellit': satellit }, null, { collapsed: false }).addTo(karte);
@@ -341,10 +333,30 @@
         if (bild.closest('a') ||                      /* verlinkte Bilder behalten ihr Ziel */
             bild.closest('.leaflet-container') ||     /* Karte */
             bild.closest('.bild-maske')) return;      /* die Maske selbst */
+        bildMaske.classList.remove('logo-maske');
         maskenBild.src = bild.currentSrc || bild.src;
         maskenBild.alt = bild.alt || '';
         if (!bildMaske.open) bildMaske.showModal();
       });
+
+      /* Das Logo in der Kopfleiste zeigt sich groß in derselben Maske. Ohne
+         JavaScript bleibt es der Link zur Startseite — deshalb steht das href
+         weiter im HTML und wird hier nur abgefangen. In der Maske erscheint
+         `logo.png` (800 px, mit Kachel-Grund), nicht das freigestellte
+         `logo-frei.png`, das nur auf schwarzem Grund trägt. */
+      var markeLink = document.querySelector('.kopf .marke');
+      var markeBild = markeLink && markeLink.querySelector('img');
+      if (markeBild) {
+        markeLink.title = markeBild.alt || 'Logo';
+        markeLink.addEventListener('click', function (e) {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          bildMaske.classList.add('logo-maske');
+          maskenBild.src = (markeBild.getAttribute('src') || '').replace('logo-frei.png', 'logo.png');
+          maskenBild.alt = markeBild.alt || '';
+          if (!bildMaske.open) bildMaske.showModal();
+        });
+      }
     }
 
     /* ---------- Warenkorb-Zähler in der Kopfleiste ---------- */
@@ -360,8 +372,64 @@
     };
     window.nfKorbBadge();
 
-    /* ---------- Jahr in der Fußleiste ---------- */
-    var jahr = document.querySelector('[data-jahr]');
-    if (jahr) jahr.textContent = new Date().getFullYear();
+    /* ---------- Impressum & Datenschutz als Maske ----------
+       Die Rechtsseiten bleiben echte Seiten: der Link behält sein href, die
+       Seiten sind direkt aufrufbar und funktionieren ohne JavaScript. Das ist
+       Pflicht (§ 5 DDG: unmittelbar erreichbar). Hier wird der Klick nur
+       abgefangen und der Text aus derselben Datei in eine Maske geladen.
+       Schlägt der Abruf fehl (z. B. Aufruf über file://), führt der Link
+       ganz normal auf die Seite. */
+    var rechtsMaske = null;
+
+    function rechtsMaskeBauen() {
+      var m = document.createElement('dialog');
+      m.className = 'maske rechts-maske';
+      m.innerHTML =
+        '<div class="rechts-kopf">' +
+          '<h2 class="rechts-titel"></h2>' +
+          '<button type="button" class="maske-schliessen" aria-label="Schließen">&times;</button>' +
+        '</div>' +
+        '<div class="rechts-koerper"><div class="rechtstext"></div></div>';
+      m.querySelector('.maske-schliessen').addEventListener('click', function () { m.close(); });
+      m.addEventListener('click', function (e) { if (e.target === m) m.close(); });
+      document.body.appendChild(m);
+      return m;
+    }
+
+    function rechtsOeffnen(adresse) {
+      return fetch(adresse, { credentials: 'same-origin' })
+        .then(function (a) { if (!a.ok) throw new Error(a.status); return a.text(); })
+        .then(function (html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var titel = doc.querySelector('main h1');
+          var text  = doc.querySelector('.rechtstext');
+          if (!text) throw new Error('kein Rechtstext');
+
+          /* Links in der Maske sollen die Maske nicht hinterrücks verlassen */
+          text.querySelectorAll('a[href^="http"]').forEach(function (a) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener');
+          });
+
+          if (!rechtsMaske) rechtsMaske = rechtsMaskeBauen();
+          rechtsMaske.querySelector('.rechts-titel').textContent = titel ? titel.textContent : '';
+          rechtsMaske.querySelector('.rechtstext').innerHTML = text.innerHTML;
+          rechtsMaske.querySelector('.rechts-koerper').scrollTop = 0;
+          if (rechtsMaske.showModal && !rechtsMaske.open) rechtsMaske.showModal();
+        });
+    }
+
+    document.querySelectorAll('.fuss-links a[href]').forEach(function (a) {
+      var ziel = a.getAttribute('href');
+      if (!/(impressum|datenschutz)\.html$/.test(ziel)) return;
+      if (!window.fetch || !window.DOMParser) return;
+      var pruef = document.createElement('dialog');
+      if (typeof pruef.showModal !== 'function') return;   /* alter Browser: normaler Link */
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;  /* neuer Tab bleibt möglich */
+        e.preventDefault();
+        rechtsOeffnen(ziel)['catch'](function () { window.location.href = ziel; });
+      });
+    });
   });
 })();

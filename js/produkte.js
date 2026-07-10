@@ -33,17 +33,19 @@
   }
 
   /* ================= Kategorien =================
-     8 Bereiche — Hygiene & Desinfektion wurde in Werkzeuge & Instrumente
-     zusammengelegt (Hasans Vorgabe, 07.07.); die d-Artikel tragen kat 'w'. */
+     9 Bereiche — Hygiene & Desinfektion ist seit 10.07. wieder ein eigener
+     Bereich (Hasans Vorgabe), die d-Artikel tragen wieder kat 'd'.
+     Neun Bereiche ergeben auf produkte.html genau das 3×3-Raster. */
   var KATEGORIEN = {
-    w: { titel: 'Werkzeuge, Instrumente & Hygiene', farbe: 'lk-blau',   bild: 'bilder/kachel-werkzeuge.jpg' },
-    c: { titel: 'Cremes & Balsame',                 farbe: 'lk-gruen',  bild: 'bilder/kachel-cremes.jpg' },
-    e: { titel: 'Elektrische Geräte',               farbe: 'lk-gold',   bild: 'bilder/kachel-geraete.jpg' },
-    b: { titel: 'Fußbäder & Zusätze',               farbe: 'lk-rot',    bild: 'bilder/kachel-fussbaeder.jpg' },
-    n: { titel: 'Nagelpflege',                      farbe: 'lk-petrol', bild: 'bilder/kachel-nagelpflege.jpg' },
-    h: { titel: 'Hornhaut & Peeling',               farbe: 'lk-orange', bild: 'bilder/kachel-hornhaut.jpg' },
-    k: { titel: 'Komfort & Entlastung',             farbe: 'lk-blau',   bild: 'bilder/kachel-komfort.jpg' },
-    g: { titel: 'Geschenke & Gutscheine',           farbe: 'lk-gold',   bild: 'bilder/kachel-geschenke.jpg' }
+    w: { titel: 'Werkzeuge & Instrumente',   farbe: 'lk-blau',   bild: 'bilder/kachel-werkzeuge.jpg' },
+    d: { titel: 'Hygiene & Desinfektion',    farbe: 'lk-petrol', bild: 'bilder/kachel-hygiene.jpg' },
+    c: { titel: 'Cremes & Balsame',          farbe: 'lk-gruen',  bild: 'bilder/kachel-cremes.jpg' },
+    e: { titel: 'Elektrische Geräte',        farbe: 'lk-gold',   bild: 'bilder/kachel-geraete.jpg' },
+    b: { titel: 'Fußbäder & Zusätze',        farbe: 'lk-rot',    bild: 'bilder/kachel-fussbaeder.jpg' },
+    n: { titel: 'Nagelpflege',               farbe: 'lk-petrol', bild: 'bilder/kachel-nagelpflege.jpg' },
+    h: { titel: 'Hornhaut & Peeling',        farbe: 'lk-orange', bild: 'bilder/kachel-hornhaut.jpg' },
+    k: { titel: 'Komfort & Entlastung',      farbe: 'lk-blau',   bild: 'bilder/kachel-komfort.jpg' },
+    g: { titel: 'Geschenke & Gutscheine',    farbe: 'lk-gold',   bild: 'bilder/kachel-geschenke.jpg' }
   };
 
   /* ================= Muster-Produkte (je Kategorie 10) ================= */
@@ -57,6 +59,14 @@
     { id: 'w7',  kat: 'w', name: 'Nagelhaut-Schieber Doppelkopf',  info: 'Schiebt und löst die Nagelhaut – zwei Arbeitsenden.',                   inhalt: '1 Stück',          preis: 8.90,  sterne: 4.4, stimmen: 16, lager: 'ok',    badge: '' },
     { id: 'w9',  kat: 'w', name: 'Instrumenten-Reinigungsbürste',  info: 'Feine Messingborsten – hält Feilen und Fräser sauber.',                 inhalt: '1 Stück',          preis: 5.90,  sterne: 4.2, stimmen: 11, lager: 'ok',    badge: '' },
     { id: 'w10', kat: 'w', name: 'Starter-Set Fußpflege',          info: 'Die 6 wichtigsten Werkzeuge im Etui – der ideale Einstieg.',            inhalt: 'Set, 6-teilig',    preis: 49.90, sterne: 4.9, stimmen: 54, lager: 'ok',    badge: 'Neu' },
+    { id: 'w3',  kat: 'w', name: 'Hornhauthobel mit Klingenschutz', info: 'Abgeschirmte Klinge, ruhige Führung – nur für geübte Hände.',          inhalt: '1 Stück + 5 Klingen', preis: 13.90, sterne: 4.4, stimmen: 19, lager: 'ok',  badge: '' },
+    { id: 'w8',  kat: 'w', name: 'Saphir-Feile doppelseitig',      info: 'Grobe und feine Seite – kürzt und glättet in einem Zug.',              inhalt: '1 Stück · 18 cm',  preis: 9.90,  sterne: 4.5, stimmen: 24, lager: 'ok',    badge: '' },
+    { id: 'w11', kat: 'w', name: 'Hornhautfeile Edelstahl',        info: 'Ergonomischer Griff, austauschbares Feilenblatt.',                     inhalt: '1 Stück + 10 Blätter', preis: 16.90, sterne: 4.6, stimmen: 21, lager: 'ok', badge: '' },
+    { id: 'w12', kat: 'w', name: 'Nagelknipser mit Auffangfach',   info: 'Kein Nagelsplitter fliegt davon – Fach zum Ausklappen.',                inhalt: '1 Stück',          preis: 11.90, sterne: 4.4, stimmen: 17, lager: 'ok',    badge: '' },
+    { id: 'w13', kat: 'w', name: 'Eckenzange spitz',               info: 'Schlanke Spitze für die Nagelecken – sauber und genau.',                inhalt: '1 Stück · 11 cm',  preis: 17.90, sterne: 4.5, stimmen: 14, lager: 'wenig', badge: '' },
+    { id: 'w14', kat: 'w', name: 'Bimsstein mit Griff',            info: 'Naturbims am Holzgriff – erreicht auch die Ferse bequem.',              inhalt: '1 Stück',          preis: 7.90,  sterne: 4.3, stimmen: 18, lager: 'ok',    badge: '' },
+    { id: 'w15', kat: 'w', name: 'Aufbewahrungsbox Instrumente',   info: 'Belüftete Box mit Einsatz – hält die Werkzeuge trocken.',               inhalt: '1 Stück · 20 × 12 cm', preis: 15.90, sterne: 4.4, stimmen: 9, lager: 'ok',  badge: '' },
+    { id: 'w16', kat: 'w', name: 'Werkzeug-Set 10-teilig',         info: 'Zangen, Feilen, Schieber und Schere im Rollenetui.',                    inhalt: 'Set, 10-teilig',   preis: 69.90, sterne: 4.8, stimmen: 31, lager: 'ok',    badge: 'Neu' },
 
     /* --- Cremes & Balsame --- */
     { id: 'c1',  kat: 'c', name: 'Fußcreme Urea 10 %',             info: 'Intensive Feuchtigkeit für trockene, beanspruchte Füße.',               inhalt: '100 ml',  grund: '8,90 € / 100 ml',   preis: 8.90,  sterne: 4.8, stimmen: 78, lager: 'ok',    badge: 'Bestseller' },
@@ -167,14 +177,22 @@
     { id: 'k16', kat: 'k', name: 'Anti-Rutsch-Socken (2 Paar)',    info: 'Sicherer Halt auf glatten Böden – waschbar bei 60 °C.',                 inhalt: '2 Paar, Gr. 36–46', preis: 11.90, sterne: 4.5, stimmen: 12, lager: 'ok',   badge: 'Neu' },
 
     /* --- Hygiene & Desinfektion --- */
-    { id: 'd1',  kat: 'w', name: 'Hand-Desinfektionsgel',          info: 'Hautschonend mit Aloe – für unterwegs.',                                inhalt: '100 ml', grund: '4,90 € / 100 ml',  preis: 4.90,  sterne: 4.5, stimmen: 40, lager: 'ok',    badge: '' },
-    { id: 'd2',  kat: 'w', name: 'Flächen-Desinfektionsspray',     info: 'Schnell wirksam – für Geräte und Arbeitsflächen.',                      inhalt: '250 ml', grund: '3,16 € / 100 ml',  preis: 7.90,  sterne: 4.6, stimmen: 27, lager: 'ok',    badge: '' },
-    { id: 'd3',  kat: 'w', name: 'Einmalhandschuhe Nitril (100)',  info: 'Puderfrei, reißfest – Größe S bis XL.',                                 inhalt: '100 Stück',        preis: 12.90, sterne: 4.7, stimmen: 61, lager: 'ok',    badge: 'Bestseller' },
-    { id: 'd4',  kat: 'w', name: 'Fußspray antibakteriell',        info: 'Erfrischt und schützt – ideal nach dem Sport.',                         inhalt: '150 ml', grund: '5,93 € / 100 ml',  preis: 8.90,  sterne: 4.4, stimmen: 25, lager: 'ok',    badge: '' },
-    { id: 'd5',  kat: 'w', name: 'Instrumenten-Desinfektionsbad',  info: 'Wanne mit Sieb-Einsatz für die Instrumenten-Pflege.',                   inhalt: '1 Stück · 1 l',    preis: 16.90, sterne: 4.5, stimmen: 14, lager: 'ok',    badge: '' },
-    { id: 'd6',  kat: 'w', name: 'Desinfektions-Konzentrat',       info: 'Ergibt bis zu 25 l gebrauchsfertige Lösung.',                           inhalt: '500 ml', grund: '25,80 € / 1 l',    preis: 12.90, sterne: 4.6, stimmen: 19, lager: 'wenig', badge: '' },
-    { id: 'd7',  kat: 'w', name: 'Einweg-Unterlagen (50er)',       info: 'Saugstark und hygienisch – 40 × 60 cm.',                                inhalt: '50 Stück',         preis: 11.90, sterne: 4.3, stimmen: 16, lager: 'ok',    badge: '' },
-    { id: 'd9',  kat: 'w', name: 'Hygiene-Reise-Set',              info: 'Gel, Spray und Tücher in der Kulturtasche.',                            inhalt: 'Set, 3-teilig',    preis: 14.90, sterne: 4.5, stimmen: 11, lager: 'ok',    badge: 'Neu' },
+    { id: 'd1',  kat: 'd', name: 'Hand-Desinfektionsgel',          info: 'Hautschonend mit Aloe – für unterwegs.',                                inhalt: '100 ml', grund: '4,90 € / 100 ml',  preis: 4.90,  sterne: 4.5, stimmen: 40, lager: 'ok',    badge: '' },
+    { id: 'd2',  kat: 'd', name: 'Flächen-Desinfektionsspray',     info: 'Schnell wirksam – für Geräte und Arbeitsflächen.',                      inhalt: '250 ml', grund: '3,16 € / 100 ml',  preis: 7.90,  sterne: 4.6, stimmen: 27, lager: 'ok',    badge: '' },
+    { id: 'd3',  kat: 'd', name: 'Einmalhandschuhe Nitril (100)',  info: 'Puderfrei, reißfest – Größe S bis XL.',                                 inhalt: '100 Stück',        preis: 12.90, sterne: 4.7, stimmen: 61, lager: 'ok',    badge: 'Bestseller' },
+    { id: 'd4',  kat: 'd', name: 'Fußspray antibakteriell',        info: 'Erfrischt und schützt – ideal nach dem Sport.',                         inhalt: '150 ml', grund: '5,93 € / 100 ml',  preis: 8.90,  sterne: 4.4, stimmen: 25, lager: 'ok',    badge: '' },
+    { id: 'd5',  kat: 'd', name: 'Instrumenten-Desinfektionsbad',  info: 'Wanne mit Sieb-Einsatz für die Instrumenten-Pflege.',                   inhalt: '1 Stück · 1 l',    preis: 16.90, sterne: 4.5, stimmen: 14, lager: 'ok',    badge: '' },
+    { id: 'd6',  kat: 'd', name: 'Desinfektions-Konzentrat',       info: 'Ergibt bis zu 25 l gebrauchsfertige Lösung.',                           inhalt: '500 ml', grund: '25,80 € / 1 l',    preis: 12.90, sterne: 4.6, stimmen: 19, lager: 'wenig', badge: '' },
+    { id: 'd7',  kat: 'd', name: 'Einweg-Unterlagen (50er)',       info: 'Saugstark und hygienisch – 40 × 60 cm.',                                inhalt: '50 Stück',         preis: 11.90, sterne: 4.3, stimmen: 16, lager: 'ok',    badge: '' },
+    { id: 'd9',  kat: 'd', name: 'Hygiene-Reise-Set',              info: 'Gel, Spray und Tücher in der Kulturtasche.',                            inhalt: 'Set, 3-teilig',    preis: 14.90, sterne: 4.5, stimmen: 11, lager: 'ok',    badge: 'Neu' },
+    { id: 'd8',  kat: 'd', name: 'Einmal-Handtücher (100er)',      info: 'Weich und saugstark – nach dem Fußbad, dann entsorgen.',                inhalt: '100 Stück',        preis: 9.90,  sterne: 4.4, stimmen: 22, lager: 'ok',    badge: '' },
+    { id: 'd10', kat: 'd', name: 'Desinfektionstücher (80er)',     info: 'Gebrauchsfertig in der Dose – für Geräte zwischendurch.',               inhalt: '80 Tücher',        preis: 6.90,  sterne: 4.5, stimmen: 29, lager: 'ok',    badge: '' },
+    { id: 'd11', kat: 'd', name: 'Hautschutzcreme für Hände',      info: 'Nach dem häufigen Desinfizieren – zieht schnell ein.',                  inhalt: '100 ml', grund: '8,90 € / 100 ml',  preis: 8.90,  sterne: 4.6, stimmen: 17, lager: 'ok',    badge: '' },
+    { id: 'd12', kat: 'd', name: 'Sprühflasche leer, 250 ml',      info: 'Beschriftbar, feiner Sprühnebel – für das Konzentrat.',                 inhalt: '1 Stück · 250 ml', preis: 3.90,  sterne: 4.2, stimmen: 13, lager: 'ok',    badge: '' },
+    { id: 'd13', kat: 'd', name: 'Mund-Nasen-Schutz (50er)',       info: 'Dreilagig, mit Nasenbügel – Typ II.',                                   inhalt: '50 Stück',         preis: 7.90,  sterne: 4.3, stimmen: 34, lager: 'ok',    badge: '' },
+    { id: 'd14', kat: 'd', name: 'Instrumenten-Reinigungstabs',    info: 'Ein Tab je Liter – löst Rückstände vor dem Desinfizieren.',             inhalt: '30 Tabs',          preis: 10.90, sterne: 4.5, stimmen: 11, lager: 'wenig', badge: '' },
+    { id: 'd15', kat: 'd', name: 'Einmal-Feilen (50er)',           info: 'Je Kundin eine frische Feile – hygienisch und einfach.',                inhalt: '50 Stück',         preis: 13.90, sterne: 4.6, stimmen: 20, lager: 'ok',    badge: 'Bestseller' },
+    { id: 'd16', kat: 'd', name: 'Hygiene-Set für zu Hause',       info: 'Handgel, Flächenspray und Einmal-Unterlagen im Set.',                   inhalt: 'Set, 3-teilig',    preis: 19.90, sterne: 4.7, stimmen: 8,  lager: 'ok',    badge: 'Neu' },
 
     /* --- Geschenke & Gutscheine --- */
     { id: 'g1',  kat: 'g', name: 'Gutschein Fachfußpflege',        info: 'Der Klassiker zum Verschenken – die komplette Pflege als Hausbesuch.',  inhalt: '1 Gutschein',      preis: 48.00, sterne: 5.0, stimmen: 24, lager: 'ok',    badge: 'Bestseller' },
@@ -468,8 +486,8 @@
         if (!kasse.reportValidity()) return;
         var text = bestellTextKasse();
         if (weg === 'whatsapp') {
-          if (window.nfWhatsApp) { window.nfWhatsApp('491735904496', text); }
-          else { window.open('https://wa.me/491735904496?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
+          if (window.nfWhatsApp) { window.nfWhatsApp('4917686961032', text); }
+          else { window.open('https://wa.me/4917686961032?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
         } else {
           location.href = 'mailto:norbertsmobilefusspflege@gmx.de' +
             '?subject=' + encodeURIComponent('Bestellung') +
