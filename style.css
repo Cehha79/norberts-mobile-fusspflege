@@ -2517,14 +2517,21 @@ body[class*="seite-"] .abschnitt-tafel .held-raster > div:first-child {
    Fester Kopf, darunter ein rollender Körper — die Maske wird nie länger
    als der Bildschirm. Der Titel bleibt beim Rollen stehen.
    ============================================================ */
+/* ACHTUNG: `display` NUR zusammen mit `[open]` setzen. Der Browser blendet
+   einen geschlossenen <dialog> über seine eingebaute Regel
+   `dialog:not([open]) { display: none }` aus. Ein unbedingtes `display: flex`
+   schlägt diese Regel — die Maske bliebe nach dem Schließen als Kasten stehen,
+   dann ohne Top-Layer, also unter der Kopfleiste und ohne erreichbares „×". */
 .rechts-maske {
   width: min(820px, calc(100vw - 32px));
   max-height: min(80dvh, 760px);
-  display: flex;
-  flex-direction: column;
   overflow: hidden;            /* gerollt wird nur der Körper */
   padding: 0;
   background: var(--tafel);    /* Kopf und Körper aus einem Guss */
+}
+.rechts-maske[open] {
+  display: flex;
+  flex-direction: column;
 }
 .rechts-kopf {
   flex: none;
